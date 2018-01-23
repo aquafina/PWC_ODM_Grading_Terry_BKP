@@ -52,20 +52,38 @@
     RowLevelBinds="true"/>
   <ViewAccessor
     Name="PwcOdmGradingSalesOrderNoVO1"
-    ViewObjectName="model.LOV.PwcOdmGradingSalesOrderNoVO"
-    RowLevelBinds="true"/>
+    ViewObjectName="model.LOV.PwcOdmGradingSalesOrderNoVO">
+    <ParameterMap>
+      <PIMap Variable="p_cust_po_no">
+        <TransientExpression><![CDATA[CustPoNumber]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ViewAccessor
     Name="PwcOdmGradingItemCodeVO1"
     ViewObjectName="model.LOV.PwcOdmGradingItemCodeVO"
     RowLevelBinds="true"/>
   <ViewAccessor
     Name="PwcOdmGradingJob1"
-    ViewObjectName="model.LOV.PwcOdmGradingJob"
-    RowLevelBinds="true"/>
+    ViewObjectName="model.LOV.PwcOdmGradingJob">
+    <ParameterMap>
+      <PIMap Variable="p_sales_order">
+        <TransientExpression><![CDATA[SalesOrderNumber]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_cust_po_no">
+        <TransientExpression><![CDATA[CustPoNumber]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ViewAccessor
     Name="PwcOdmGradingCustPoNo1"
-    ViewObjectName="model.LOV.PwcOdmGradingCustPoNo"
-    RowLevelBinds="true"/>
+    ViewObjectName="model.LOV.PwcOdmGradingCustPoNo">
+    <ParameterMap>
+      <PIMap Variable="p_order_no">
+        <TransientExpression><![CDATA[SalesOrderNumber]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ListBinding
     Name="LOV_SalesOrderNumber"
     ListVOName="PwcOdmGradingSalesOrderNoVO1"

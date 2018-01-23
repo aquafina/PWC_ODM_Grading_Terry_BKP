@@ -70,6 +70,8 @@ and oola.ORG_ID = nvl(:p_org_id,oola.ORG_ID)]]>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="30"/>
+        <LABEL
+          ResId="model.LOV.PwcOdmGradingCustPoNo.CustPoNumber_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>

@@ -92,6 +92,12 @@ ORDER BY 3]]>
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.LOV.PwcOdmGradingJob.WipEntityId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
   </ViewAttribute>
   <ViewAttribute
     Name="WipEntityName"
@@ -112,6 +118,8 @@ ORDER BY 3]]>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="30"/>
+        <LABEL
+          ResId="model.LOV.PwcOdmGradingJob.WipEntityName_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
