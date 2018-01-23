@@ -375,6 +375,18 @@
       <Attr Name="_DisplaySize" Value="80"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="CustPoNumber"
+    Precision="80"
+    ColumnName="CUST_PO_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="NG_GRADING_HEADERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+  </Attribute>
   <Key
     Name="PwcodmnggradingheaderseoPrimaryKey"
     PrimaryKey="true">

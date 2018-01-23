@@ -36,15 +36,125 @@
        PwcOdmNGGradingHeadersEO.ATTRIBUTE14, 
        PwcOdmNGGradingHeadersEO.ATTRIBUTE15, 
        PwcOdmNGGradingHeadersEO.STITCH_QUANTITY, 
-       PwcOdmNGGradingHeadersEO.GD_NO"
+       PwcOdmNGGradingHeadersEO.CUST_PO_NUMBER"
   FromList="NG_GRADING_HEADERS PwcOdmNGGradingHeadersEO"
   BindingStyle="OracleName"
   CustomQuery="false"
+  FetchMode="FETCH_AS_NEEDED"
   PageIterMode="Full"
   UseGlueCode="false">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="VarAccess"/>
   </DesignTime>
+  <ViewAccessor
+    Name="PwcOdmGradingGrNoVO1"
+    ViewObjectName="model.LOV.PwcOdmGradingGrNoVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PwcOdmGradingSalesOrderNoVO1"
+    ViewObjectName="model.LOV.PwcOdmGradingSalesOrderNoVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PwcOdmGradingItemCodeVO1"
+    ViewObjectName="model.LOV.PwcOdmGradingItemCodeVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PwcOdmGradingJob1"
+    ViewObjectName="model.LOV.PwcOdmGradingJob"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PwcOdmGradingCustPoNo1"
+    ViewObjectName="model.LOV.PwcOdmGradingCustPoNo"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_SalesOrderNumber"
+    ListVOName="PwcOdmGradingSalesOrderNoVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_SalesOrderNumber_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SalesOrderNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrderNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrderNumber"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ItemCode"
+    ListVOName="PwcOdmGradingItemCodeVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_ItemCode_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ItemCode"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="ItemDescription"/>
+      <Item Value="ItemId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="InventoryItemId"/>
+      <Item Value="ConcatenatedSegments"/>
+      <Item Value="ConcatenatedSegments"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ConcatenatedSegments"/>
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Job"
+    ListVOName="PwcOdmGradingJob1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_Job_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Job"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="JobQuantity"/>
+      <Item Value="StitchQuantity"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="WipEntityName"/>
+      <Item Value="JobQuantity"/>
+      <Item Value="StitchingQuantity"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="WipEntityId"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CustPoNumber"
+    ListVOName="PwcOdmGradingCustPoNo1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_CustPoNumber_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CustPoNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CustPoNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CustPoNumber"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
   <EntityUsage
     Name="PwcOdmNGGradingHeadersEO"
     Entity="model.EO.PwcOdmNGGradingHeadersEO"/>
@@ -56,10 +166,18 @@
     AliasName="GD_ID"/>
   <ViewAttribute
     Name="SalesOrderNumber"
+    LOVName="LOV_SalesOrderNumber"
     PrecisionRule="true"
     EntityAttrName="SalesOrderNumber"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="SALES_ORDER_NUMBER"/>
+    AliasName="SALES_ORDER_NUMBER">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ItemId"
     PrecisionRule="true"
@@ -68,10 +186,18 @@
     AliasName="ITEM_ID"/>
   <ViewAttribute
     Name="ItemCode"
+    LOVName="LOV_ItemCode"
     PrecisionRule="true"
     EntityAttrName="ItemCode"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="ITEM_CODE"/>
+    AliasName="ITEM_CODE">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ItemDescription"
     PrecisionRule="true"
@@ -89,7 +215,15 @@
     PrecisionRule="true"
     EntityAttrName="Job"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="JOB"/>
+    AliasName="JOB"
+    LOVName="LOV_Job">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="JobQuantity"
     PrecisionRule="true"
@@ -229,9 +363,17 @@
     EntityUsage="PwcOdmNGGradingHeadersEO"
     AliasName="STITCH_QUANTITY"/>
   <ViewAttribute
-    Name="GdNo"
+    Name="CustPoNumber"
     PrecisionRule="true"
-    EntityAttrName="GdNo"
+    EntityAttrName="CustPoNumber"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="GD_NO"/>
+    AliasName="CUST_PO_NUMBER"
+    LOVName="LOV_CustPoNumber">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
 </ViewObject>

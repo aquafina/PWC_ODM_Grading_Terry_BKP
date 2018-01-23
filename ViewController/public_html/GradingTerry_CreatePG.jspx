@@ -18,82 +18,95 @@
             <f:facet name="info"/>
             <af:panelFormLayout id="pfl1" maxColumns="2" rows="5">
               <f:facet name="footer"/>
-              <af:inputText value="#{bindings.GdNo.inputValue}"
-                            label="GD Number"
-                            required="#{bindings.GdNo.hints.mandatory}"
-                            columns="#{bindings.GdNo.hints.displayWidth}"
-                            maximumLength="#{bindings.GdNo.hints.precision}"
-                            shortDesc="#{bindings.GdNo.hints.tooltip}" id="it1"
-                            contentStyle='width:200px;'>
-                <f:validator binding="#{bindings.GdNo.validator}"/>
-              </af:inputText>
-              <af:inputText value="#{bindings.SalesOrderNumber.inputValue}"
-                            label="Sales Order Number"
-                            required="#{bindings.SalesOrderNumber.hints.mandatory}"
-                            columns="#{bindings.SalesOrderNumber.hints.displayWidth}"
-                            maximumLength="#{bindings.SalesOrderNumber.hints.precision}"
-                            shortDesc="#{bindings.SalesOrderNumber.hints.tooltip}"
-                            id="it2" contentStyle="width:200px;">
+              <af:inputListOfValues id="custPoNumberId"
+                                    popupTitle="Search and Select: #{bindings.CustPoNumber.hints.label}"
+                                    value="#{bindings.CustPoNumber.inputValue}"
+                                    label="Customer PO No"
+                                    model="#{bindings.CustPoNumber.listOfValuesModel}"
+                                    required="#{bindings.CustPoNumber.hints.mandatory}"
+                                    columns="#{bindings.CustPoNumber.hints.displayWidth}"
+                                    shortDesc="#{bindings.CustPoNumber.hints.tooltip}"
+                                    contentStyle="width:200px;">
+                <f:validator binding="#{bindings.CustPoNumber.validator}"/>
+              </af:inputListOfValues>
+              <af:inputListOfValues id="salesOrderNumberId"
+                                    popupTitle="Search and Select: #{bindings.SalesOrderNumber.hints.label}"
+                                    value="#{bindings.SalesOrderNumber.inputValue}"
+                                    label="Sales Order Number"
+                                    model="#{bindings.SalesOrderNumber.listOfValuesModel}"
+                                    required="#{bindings.SalesOrderNumber.hints.mandatory}"
+                                    columns="#{bindings.SalesOrderNumber.hints.displayWidth}"
+                                    shortDesc="#{bindings.SalesOrderNumber.hints.tooltip}"
+                                    contentStyle="width:200px;"
+                                    autoSubmit="true">
                 <f:validator binding="#{bindings.SalesOrderNumber.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.SalesOrderNumber.format}"/>
-              </af:inputText>
-              <af:inputText value="#{bindings.ItemCode.inputValue}"
-                            label="Item Code"
-                            required="#{bindings.ItemCode.hints.mandatory}"
-                            columns="#{bindings.ItemCode.hints.displayWidth}"
-                            maximumLength="#{bindings.ItemCode.hints.precision}"
-                            shortDesc="#{bindings.ItemCode.hints.tooltip}"
-                            id="it3" contentStyle="width:200px;">
+              </af:inputListOfValues>
+              <af:inputListOfValues id="itemCodeId"
+                                    popupTitle="Search and Select: #{bindings.ItemCode.hints.label}"
+                                    value="#{bindings.ItemCode.inputValue}"
+                                    label="Item Code"
+                                    model="#{bindings.ItemCode.listOfValuesModel}"
+                                    required="#{bindings.ItemCode.hints.mandatory}"
+                                    columns="#{bindings.ItemCode.hints.displayWidth}"
+                                    shortDesc="#{bindings.ItemCode.hints.tooltip}"
+                                    contentStyle="width:200px;"
+                                    autoSubmit="true">
                 <f:validator binding="#{bindings.ItemCode.validator}"/>
-              </af:inputText>
-              <af:inputText value="#{bindings.ItemDescription.inputValue}"
+              </af:inputListOfValues>
+              <af:inputText value="#{bindings.ItemDescription1.inputValue}"
                             label="Item Description"
-                            required="#{bindings.ItemDescription.hints.mandatory}"
-                            columns="#{bindings.ItemDescription.hints.displayWidth}"
-                            maximumLength="#{bindings.ItemDescription.hints.precision}"
-                            shortDesc="#{bindings.ItemDescription.hints.tooltip}"
-                            id="it7" contentStyle="width:200px;">
-                <f:validator binding="#{bindings.ItemDescription.validator}"/>
+                            required="#{bindings.ItemDescription1.hints.mandatory}"
+                            columns="#{bindings.ItemDescription1.hints.displayWidth}"
+                            maximumLength="#{bindings.ItemDescription1.hints.precision}"
+                            shortDesc="#{bindings.ItemDescription1.hints.tooltip}"
+                            id="it7" contentStyle="width:200px;"
+                            readOnly="true" partialTriggers="itemCodeId">
+                <f:validator binding="#{bindings.ItemDescription1.validator}"/>
               </af:inputText>
               <af:inputDate value="#{bindings.GdDate.inputValue}"
-                            label="Date"
+                            label="#{bindings.GdDate.hints.label}"
                             required="#{bindings.GdDate.hints.mandatory}"
                             shortDesc="#{bindings.GdDate.hints.tooltip}"
                             id="id1" contentStyle="width:200px;">
                 <f:validator binding="#{bindings.GdDate.validator}"/>
                 <af:convertDateTime pattern="#{bindings.GdDate.format}"/>
               </af:inputDate>
-              <af:inputText value="#{bindings.Job.inputValue}"
-                            label="#{bindings.Job.hints.label}"
-                            required="#{bindings.Job.hints.mandatory}"
-                            columns="#{bindings.Job.hints.displayWidth}"
-                            maximumLength="#{bindings.Job.hints.precision}"
-                            shortDesc="#{bindings.Job.hints.tooltip}" id="it4"
-                            contentStyle="width:200px;">
-                <f:validator binding="#{bindings.Job.validator}"/>
-              </af:inputText>
-              <af:inputText value="#{bindings.JobQuantity.inputValue}"
+              <af:inputListOfValues id="jobId"
+                                    popupTitle="Search and Select: #{bindings.Job1.hints.label}"
+                                    value="#{bindings.Job1.inputValue}"
+                                    label="#{bindings.Job1.hints.label}"
+                                    model="#{bindings.Job1.listOfValuesModel}"
+                                    required="#{bindings.Job1.hints.mandatory}"
+                                    columns="#{bindings.Job1.hints.displayWidth}"
+                                    shortDesc="#{bindings.Job1.hints.tooltip}"
+                                    contentStyle="width:200px;">
+                <f:validator binding="#{bindings.Job1.validator}"/>
+              </af:inputListOfValues>
+              <af:inputText value="#{bindings.JobQuantity1.inputValue}"
                             label="Job Quantity"
-                            required="#{bindings.JobQuantity.hints.mandatory}"
-                            columns="#{bindings.JobQuantity.hints.displayWidth}"
-                            maximumLength="#{bindings.JobQuantity.hints.precision}"
-                            shortDesc="#{bindings.JobQuantity.hints.tooltip}"
-                            id="it5" contentStyle="width:200px;">
-                <f:validator binding="#{bindings.JobQuantity.validator}"/>
+                            required="#{bindings.JobQuantity1.hints.mandatory}"
+                            columns="#{bindings.JobQuantity1.hints.displayWidth}"
+                            maximumLength="#{bindings.JobQuantity1.hints.precision}"
+                            shortDesc="#{bindings.JobQuantity1.hints.tooltip}"
+                            id="it5" contentStyle="width:200px;"
+                            readOnly="true" partialTriggers="jobId">
+                <f:validator binding="#{bindings.JobQuantity1.validator}"/>
                 <af:convertNumber groupingUsed="false"
-                                  pattern="#{bindings.JobQuantity.format}"/>
+                                  pattern="#{bindings.JobQuantity1.format}"/>
               </af:inputText>
-              <af:inputText value="#{bindings.StitchQuantity.inputValue}"
+              <af:inputText value="#{bindings.StitchQuantity1.inputValue}"
                             label="Stitching Quantity"
-                            required="#{bindings.StitchQuantity.hints.mandatory}"
-                            columns="#{bindings.StitchQuantity.hints.displayWidth}"
-                            maximumLength="#{bindings.StitchQuantity.hints.precision}"
-                            shortDesc="#{bindings.StitchQuantity.hints.tooltip}"
-                            id="it6" contentStyle="width:200px;">
-                <f:validator binding="#{bindings.StitchQuantity.validator}"/>
+                            required="#{bindings.StitchQuantity1.hints.mandatory}"
+                            columns="#{bindings.StitchQuantity1.hints.displayWidth}"
+                            maximumLength="#{bindings.StitchQuantity1.hints.precision}"
+                            shortDesc="#{bindings.StitchQuantity1.hints.tooltip}"
+                            id="it6" contentStyle="width:200px;"
+                            readOnly="true" partialTriggers="jobId">
+                <f:validator binding="#{bindings.StitchQuantity1.validator}"/>
                 <af:convertNumber groupingUsed="false"
-                                  pattern="#{bindings.StitchQuantity.format}"/>
+                                  pattern="#{bindings.StitchQuantity1.format}"/>
               </af:inputText>
               <af:separator id="s1" inlineStyle="height:10px;"/>
               <af:toolbar id="t1">

@@ -11,6 +11,6 @@
     <Attr Name="_deployType" Value="0"/>
   </DesignTime>
   <ViewUsage
-    Name="PwcOdmNGGradingHeadersEOView1"
+    Name="PwcOdmNGGradingHeadersVO1"
     ViewObjectName="model.VO.PwcOdmNGGradingHeadersVO"/>
 </AppModule>
