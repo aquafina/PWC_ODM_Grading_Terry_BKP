@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="model.AM.PwcOdmGradingTerryAM">
+      <AppModuleConfig name="PwcOdmGradingTerryAMLocal" ApplicationName="model.AM.PwcOdmGradingTerryAM" DeployPlatform="LOCAL" jbo.project="model.Model">
+         <Security AppModuleJndiName="model.AM.PwcOdmGradingTerryAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/Conn1DS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="PwcOdmGradingTerryAMShared" ApplicationName="model.AM.PwcOdmGradingTerryAM" DeployPlatform="LOCAL" jbo.project="model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="model.AM.PwcOdmGradingTerryAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/Conn1DS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

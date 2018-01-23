@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:panelGroupLayout id="pgl1"
+                             inlineStyle="width:100%;">
+          <af:panelHeader text="Create / Edit" id="ph1">
+            <f:facet name="context"/>
+            <f:facet name="menuBar"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="legend"/>
+            <f:facet name="info"/>
+            <af:panelFormLayout id="pfl1" maxColumns="2" rows="5">
+              <f:facet name="footer"/>
+              <af:inputText value="#{bindings.GdNo.inputValue}"
+                            label="GD Number"
+                            required="#{bindings.GdNo.hints.mandatory}"
+                            columns="#{bindings.GdNo.hints.displayWidth}"
+                            maximumLength="#{bindings.GdNo.hints.precision}"
+                            shortDesc="#{bindings.GdNo.hints.tooltip}" id="it1"
+                            contentStyle='width:200px;'>
+                <f:validator binding="#{bindings.GdNo.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.SalesOrderNumber.inputValue}"
+                            label="Sales Order Number"
+                            required="#{bindings.SalesOrderNumber.hints.mandatory}"
+                            columns="#{bindings.SalesOrderNumber.hints.displayWidth}"
+                            maximumLength="#{bindings.SalesOrderNumber.hints.precision}"
+                            shortDesc="#{bindings.SalesOrderNumber.hints.tooltip}"
+                            id="it2" contentStyle="width:200px;">
+                <f:validator binding="#{bindings.SalesOrderNumber.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.SalesOrderNumber.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.ItemCode.inputValue}"
+                            label="Item Code"
+                            required="#{bindings.ItemCode.hints.mandatory}"
+                            columns="#{bindings.ItemCode.hints.displayWidth}"
+                            maximumLength="#{bindings.ItemCode.hints.precision}"
+                            shortDesc="#{bindings.ItemCode.hints.tooltip}"
+                            id="it3" contentStyle="width:200px;">
+                <f:validator binding="#{bindings.ItemCode.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.ItemDescription.inputValue}"
+                            label="Item Description"
+                            required="#{bindings.ItemDescription.hints.mandatory}"
+                            columns="#{bindings.ItemDescription.hints.displayWidth}"
+                            maximumLength="#{bindings.ItemDescription.hints.precision}"
+                            shortDesc="#{bindings.ItemDescription.hints.tooltip}"
+                            id="it7" contentStyle="width:200px;">
+                <f:validator binding="#{bindings.ItemDescription.validator}"/>
+              </af:inputText>
+              <af:inputDate value="#{bindings.GdDate.inputValue}"
+                            label="Date"
+                            required="#{bindings.GdDate.hints.mandatory}"
+                            shortDesc="#{bindings.GdDate.hints.tooltip}"
+                            id="id1" contentStyle="width:200px;">
+                <f:validator binding="#{bindings.GdDate.validator}"/>
+                <af:convertDateTime pattern="#{bindings.GdDate.format}"/>
+              </af:inputDate>
+              <af:inputText value="#{bindings.Job.inputValue}"
+                            label="#{bindings.Job.hints.label}"
+                            required="#{bindings.Job.hints.mandatory}"
+                            columns="#{bindings.Job.hints.displayWidth}"
+                            maximumLength="#{bindings.Job.hints.precision}"
+                            shortDesc="#{bindings.Job.hints.tooltip}" id="it4"
+                            contentStyle="width:200px;">
+                <f:validator binding="#{bindings.Job.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.JobQuantity.inputValue}"
+                            label="Job Quantity"
+                            required="#{bindings.JobQuantity.hints.mandatory}"
+                            columns="#{bindings.JobQuantity.hints.displayWidth}"
+                            maximumLength="#{bindings.JobQuantity.hints.precision}"
+                            shortDesc="#{bindings.JobQuantity.hints.tooltip}"
+                            id="it5" contentStyle="width:200px;">
+                <f:validator binding="#{bindings.JobQuantity.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.JobQuantity.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.StitchQuantity.inputValue}"
+                            label="Stitching Quantity"
+                            required="#{bindings.StitchQuantity.hints.mandatory}"
+                            columns="#{bindings.StitchQuantity.hints.displayWidth}"
+                            maximumLength="#{bindings.StitchQuantity.hints.precision}"
+                            shortDesc="#{bindings.StitchQuantity.hints.tooltip}"
+                            id="it6" contentStyle="width:200px;">
+                <f:validator binding="#{bindings.StitchQuantity.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.StitchQuantity.format}"/>
+              </af:inputText>
+              <af:separator id="s1" inlineStyle="height:10px;"/>
+              <af:toolbar id="t1">
+                <af:commandButton actionListener="#{bindings.CreateInsert.execute}"
+                                  text="New"
+                                  disabled="#{!bindings.CreateInsert.enabled}"
+                                  id="cb1"/>
+                <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                  text="Save"
+                                  disabled="#{!bindings.Commit.enabled}"
+                                  id="cb2"/>
+                <af:commandButton actionListener="#{bindings.Delete.execute}"
+                                  text="Delete"
+                                  disabled="#{!bindings.Delete.enabled}"
+                                  id="cb3"/>
+              </af:toolbar>
+            </af:panelFormLayout>
+          </af:panelHeader>
+        </af:panelGroupLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>
