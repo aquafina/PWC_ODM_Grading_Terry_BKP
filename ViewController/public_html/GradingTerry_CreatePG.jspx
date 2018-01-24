@@ -149,12 +149,7 @@
                       varStatus="vs" width="877" partialTriggers="::cb4 ::cb6"
                       autoHeightRows="-1" filterVisible="true"
                       rowSelection="multiple">
-              <af:column id="column1" align="center" width="53">
-                <af:selectBooleanCheckbox value="#{row.bindings.ReturnFlag.inputValue}"
-                                          label="#{row.bindings.ReturnFlag.label}"
-                                          shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.RetrunFlag.tooltip}"
-                                          id="sbc1"/>
-              </af:column>
+              <af:column id="column1" align="center" width="53"/>
               <af:column sortProperty="#{bindings.PwcOdmNGGradingLinesVO2.hints.StitchingLineId.name}"
                          sortable="false" headerText="Sr No" id="c8"
                          align="center">
