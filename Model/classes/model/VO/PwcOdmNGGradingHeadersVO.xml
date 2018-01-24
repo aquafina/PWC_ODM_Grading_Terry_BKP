@@ -47,10 +47,6 @@
     <Attr Name="_codeGenFlag2" Value="VarAccess"/>
   </DesignTime>
   <ViewAccessor
-    Name="PwcOdmGradingGrNoVO1"
-    ViewObjectName="model.LOV.PwcOdmGradingGrNoVO"
-    RowLevelBinds="true"/>
-  <ViewAccessor
     Name="PwcOdmGradingSalesOrderNoVO1"
     ViewObjectName="model.LOV.PwcOdmGradingSalesOrderNoVO">
     <ParameterMap>
@@ -230,11 +226,11 @@
     AliasName="GD_DATE"/>
   <ViewAttribute
     Name="Job"
+    LOVName="LOV_Job"
     PrecisionRule="true"
     EntityAttrName="Job"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="JOB"
-    LOVName="LOV_Job">
+    AliasName="JOB">
     <Properties>
       <SchemaBasedProperties>
         <CONTROLTYPE
@@ -382,11 +378,11 @@
     AliasName="STITCH_QUANTITY"/>
   <ViewAttribute
     Name="CustPoNumber"
+    LOVName="LOV_CustPoNumber"
     PrecisionRule="true"
     EntityAttrName="CustPoNumber"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="CUST_PO_NUMBER"
-    LOVName="LOV_CustPoNumber">
+    AliasName="CUST_PO_NUMBER">
     <Properties>
       <SchemaBasedProperties>
         <CONTROLTYPE
@@ -394,4 +390,9 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewLinkAccessor
+    Name="PwcOdmNGGradingLinesVO"
+    ViewLink="model.VL.PwcOdmNGGradingHdrsLinesVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
 </ViewObject>

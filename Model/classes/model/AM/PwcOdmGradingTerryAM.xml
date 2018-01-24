@@ -13,4 +13,19 @@
   <ViewUsage
     Name="PwcOdmNGGradingHeadersVO1"
     ViewObjectName="model.VO.PwcOdmNGGradingHeadersVO"/>
+  <ViewUsage
+    Name="PwcOdmNGGradingLinesVO1"
+    ViewObjectName="model.VO.PwcOdmNGGradingLinesVO"/>
+  <ViewUsage
+    Name="PwcOdmNGGradingHeadersVO2"
+    ViewObjectName="model.VO.PwcOdmNGGradingHeadersVO"/>
+  <ViewUsage
+    Name="PwcOdmNGGradingLinesVO2"
+    ViewObjectName="model.VO.PwcOdmNGGradingLinesVO"/>
+  <ViewLinkUsage
+    Name="PwcOdmNGGradingHdrsLinesVL"
+    ViewLinkObjectName="model.VL.PwcOdmNGGradingHdrsLinesVL"
+    SrcViewUsageName="model.AM.PwcOdmGradingTerryAM.PwcOdmNGGradingHeadersVO2"
+    DstViewUsageName="model.AM.PwcOdmGradingTerryAM.PwcOdmNGGradingLinesVO2"
+    Reversed="false"/>
 </AppModule>
