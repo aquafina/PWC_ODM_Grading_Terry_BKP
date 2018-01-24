@@ -9,7 +9,10 @@
   BindingStyle="OracleName"
   CustomQuery="true"
   PageIterMode="Full"
-  UseGlueCode="false">
+  UseGlueCode="false"
+  FetchMode="FETCH_AS_NEEDED"
+  FetchSize="20"
+  RangeSize="21">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
     <Attr Name="_isExpertMode" Value="true"/>
@@ -21,7 +24,7 @@
     </SchemaBasedProperties>
   </Properties>
   <SQLQuery>
-    <![CDATA[SELECT  ffvv.FLEX_VALUE GR_NUMBER
+    <![CDATA[SELECT  ffvv.FLEX_VALUE STITCHING_LINE_NUMBER
      FROM apps.fnd_flex_values_vl ffvv
           ,apps.fnd_flex_value_sets ffvs
     WHERE ffvv.flex_value_set_id = ffvs.flex_value_set_id
@@ -29,7 +32,7 @@
 ORDER BY 1]]>
   </SQLQuery>
   <ViewAttribute
-    Name="GrNumber"
+    Name="StitchingLineNumber"
     IsUpdateable="false"
     IsPersistent="false"
     IsNotNull="true"
@@ -37,21 +40,23 @@ ORDER BY 1]]>
     Precision="150"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    AliasName="GR_NUMBER"
-    Expression="GR_NUMBER"
+    AliasName="STITCHING_LINE_NUMBER"
+    Expression="STITCHING_LINE_NUMBER"
     SQLType="VARCHAR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="150"/>
     </DesignTime>
     <Properties>
       <SchemaBasedProperties>
+        <LABEL
+          ResId="model.LOV.PwcOdmGradingStitchingLineId.StitchingLineNumber_LABEL"/>
         <DISPLAYWIDTH
           Value="30"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
   <AttrArray Name="KeyAttributes">
-    <Item Value="GrNumber"/>
+    <Item Value="StitchingLineNumber"/>
   </AttrArray>
   <ResourceBundle>
     <PropertiesBundle

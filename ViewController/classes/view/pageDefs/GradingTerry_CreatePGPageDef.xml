@@ -8,6 +8,9 @@
     <iterator Binds="PwcOdmNGGradingHeadersVO2" RangeSize="25"
               DataControl="PwcOdmGradingTerryAMDataControl"
               id="PwcOdmNGGradingHeadersVO2Iterator"/>
+    <iterator Binds="PwcOdmNGGradingLinesVO2" RangeSize="25"
+              DataControl="PwcOdmGradingTerryAMDataControl"
+              id="PwcOdmNGGradingLinesVO2Iterator"/>
   </executables>
   <bindings>
     <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
@@ -52,5 +55,55 @@
             RequiresUpdateModel="true" Action="createInsertRow"/>
     <action IterBinding="PwcOdmNGGradingHeadersVO2Iterator" id="Delete"
             RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="PwcOdmNGGradingLinesVO2Iterator"
+          id="PwcOdmNGGradingLinesVO2">
+      <nodeDefinition DefName="model.VO.PwcOdmNGGradingLinesVO"
+                      Name="PwcOdmNGGradingLinesVO20">
+        <AttrNames>
+          <Item Value="StitchingLineNo"/>
+          <Item Value="TotalQuantity"/>
+          <Item Value="Gradea"/>
+          <Item Value="Gradeb"/>
+          <Item Value="Gradec"/>
+          <Item Value="Rewash"/>
+          <Item Value="Remarks"/>
+          <Item Value="StitchingLineId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PwcOdmNGGradingLinesVO2Iterator" id="CreateInsert1"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="PwcOdmNGGradingLinesVO2Iterator" id="Delete1"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="SumTotalQuantity">
+      <AttrNames>
+        <Item Value="SumTotalQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="SumGradeA">
+      <AttrNames>
+        <Item Value="SumGradeA"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="SumGradeC">
+      <AttrNames>
+        <Item Value="SumGradeC"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="SumRewash">
+      <AttrNames>
+        <Item Value="SumRewash"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="SumGradeB">
+      <AttrNames>
+        <Item Value="SumGradeB"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

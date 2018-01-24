@@ -21,10 +21,12 @@
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="NG_GRADING_HEADERS"
-    PrimaryKey="true">
+    PrimaryKey="true"
+    IsUpdateable="while_insert">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("PWC_ODM_GRADING_HEADERS_S",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
   </Attribute>
   <Attribute
     Name="SalesOrderNumber"
@@ -361,18 +363,6 @@
     TableName="NG_GRADING_HEADERS">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="GdNo"
-    Precision="80"
-    ColumnName="GD_NO"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="NG_GRADING_HEADERS">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="80"/>
     </DesignTime>
   </Attribute>
   <Attribute

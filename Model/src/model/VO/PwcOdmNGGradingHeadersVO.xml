@@ -114,9 +114,9 @@
       <Item Value="ItemId"/>
     </AttrArray>
     <AttrArray Name="ListAttrNames">
+      <Item Value="ConcatenatedSegments"/>
+      <Item Value="Description"/>
       <Item Value="InventoryItemId"/>
-      <Item Value="ConcatenatedSegments"/>
-      <Item Value="ConcatenatedSegments"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="ConcatenatedSegments"/>
@@ -177,7 +177,8 @@
     PrecisionRule="true"
     EntityAttrName="GdId"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="GD_ID"/>
+    AliasName="GD_ID"
+    IsUpdateable="while_insert"/>
   <ViewAttribute
     Name="SalesOrderNumber"
     LOVName="LOV_SalesOrderNumber"
@@ -389,6 +390,61 @@
           Value="input_text_lov"/>
       </SchemaBasedProperties>
     </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumTotalQuantity"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[PwcOdmNGGradingLinesVO.sum("TotalQuantity")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumGradeA"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[PwcOdmNGGradingLinesVO.sum("Gradea")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumGradeB"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[PwcOdmNGGradingLinesVO.sum("Gradeb")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumGradeC"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[PwcOdmNGGradingLinesVO.sum("Gradec")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumRewash"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[PwcOdmNGGradingLinesVO.sum("Rewash")]]></TransientExpression>
   </ViewAttribute>
   <ViewLinkAccessor
     Name="PwcOdmNGGradingLinesVO"

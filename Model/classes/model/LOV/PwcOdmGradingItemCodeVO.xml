@@ -19,6 +19,17 @@
         ResId="model.LOV.PwcOdmGradingItemCodeVO_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
+  <Variable
+    Name="p_org_id"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
   <SQLQuery>
     <![CDATA[select  oola.INVENTORY_ITEM_ID
         ,msi.CONCATENATED_SEGMENTS

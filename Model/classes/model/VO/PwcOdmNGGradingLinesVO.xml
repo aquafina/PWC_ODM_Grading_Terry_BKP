@@ -46,6 +46,29 @@
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="VarAccess"/>
   </DesignTime>
+  <ViewAccessor
+    Name="PwcOdmGradingStitchingLineId1"
+    ViewObjectName="model.LOV.PwcOdmGradingStitchingLineId"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_StitchingLineNo"
+    ListVOName="PwcOdmGradingStitchingLineId1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_StitchingLineNo_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="StitchingLineNo"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="StitchingLineNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StitchingLineNumber"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
   <EntityUsage
     Name="PwcOdmNGGradingLinesEO"
     Entity="model.EO.PwcOdmNGGradingLinesEO"/>
@@ -61,7 +84,15 @@
     PrecisionRule="true"
     EntityAttrName="StitchingLineNo"
     EntityUsage="PwcOdmNGGradingLinesEO"
-    AliasName="STITCHING_LINE_NO"/>
+    AliasName="STITCHING_LINE_NO"
+    LOVName="LOV_StitchingLineNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="GdId"
     PrecisionRule="true"
@@ -242,6 +273,15 @@
     EntityAttrName="Rewash"
     EntityUsage="PwcOdmNGGradingLinesEO"
     AliasName="REWASH"/>
+  <ViewAttribute
+    Name="ReturnFlag"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Boolean"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
   <ViewLinkAccessor
     Name="PwcOdmNGGradingHeadersVO"
     ViewLink="model.VL.PwcOdmNGGradingHdrsLinesVL"
