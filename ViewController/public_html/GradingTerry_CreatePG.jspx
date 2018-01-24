@@ -21,11 +21,12 @@
               <af:inputListOfValues id="custPoNumberId"
                                     popupTitle="Search and Select: #{bindings.CustPoNumber.hints.label}"
                                     value="#{bindings.CustPoNumber.inputValue}"
-                                    label="Customer PO No"
+                                    label="Customer PO Number"
                                     model="#{bindings.CustPoNumber.listOfValuesModel}"
                                     required="#{bindings.CustPoNumber.hints.mandatory}"
                                     columns="#{bindings.CustPoNumber.hints.displayWidth}"
                                     shortDesc="#{bindings.CustPoNumber.hints.tooltip}"
+                                    autoSubmit="true"
                                     contentStyle="width:200px;">
                 <f:validator binding="#{bindings.CustPoNumber.validator}"/>
               </af:inputListOfValues>
@@ -37,8 +38,8 @@
                                     required="#{bindings.SalesOrderNumber.hints.mandatory}"
                                     columns="#{bindings.SalesOrderNumber.hints.displayWidth}"
                                     shortDesc="#{bindings.SalesOrderNumber.hints.tooltip}"
-                                    contentStyle="width:200px;"
-                                    autoSubmit="true">
+                                    autoSubmit="true"
+                                    contentStyle="width:200px;">
                 <f:validator binding="#{bindings.SalesOrderNumber.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.SalesOrderNumber.format}"/>
@@ -55,15 +56,15 @@
                                     autoSubmit="true">
                 <f:validator binding="#{bindings.ItemCode.validator}"/>
               </af:inputListOfValues>
-              <af:inputText value="#{bindings.ItemDescription1.inputValue}"
+              <af:inputText value="#{bindings.ItemDescription.inputValue}"
                             label="Item Description"
-                            required="#{bindings.ItemDescription1.hints.mandatory}"
-                            columns="#{bindings.ItemDescription1.hints.displayWidth}"
-                            maximumLength="#{bindings.ItemDescription1.hints.precision}"
-                            shortDesc="#{bindings.ItemDescription1.hints.tooltip}"
-                            id="it7" contentStyle="width:200px;"
-                            readOnly="true" partialTriggers="itemCodeId">
-                <f:validator binding="#{bindings.ItemDescription1.validator}"/>
+                            required="#{bindings.ItemDescription.hints.mandatory}"
+                            columns="#{bindings.ItemDescription.hints.displayWidth}"
+                            maximumLength="#{bindings.ItemDescription.hints.precision}"
+                            shortDesc="#{bindings.ItemDescription.hints.tooltip}"
+                            id="it1" partialTriggers="itemCodeId"
+                            contentStyle="width:200px" readOnly="true">
+                <f:validator binding="#{bindings.ItemDescription.validator}"/>
               </af:inputText>
               <af:inputDate value="#{bindings.GdDate.inputValue}"
                             label="#{bindings.GdDate.hints.label}"
@@ -74,39 +75,38 @@
                 <af:convertDateTime pattern="#{bindings.GdDate.format}"/>
               </af:inputDate>
               <af:inputListOfValues id="jobId"
-                                    popupTitle="Search and Select: #{bindings.Job1.hints.label}"
-                                    value="#{bindings.Job1.inputValue}"
-                                    label="#{bindings.Job1.hints.label}"
-                                    model="#{bindings.Job1.listOfValuesModel}"
-                                    required="#{bindings.Job1.hints.mandatory}"
-                                    columns="#{bindings.Job1.hints.displayWidth}"
-                                    shortDesc="#{bindings.Job1.hints.tooltip}"
-                                    contentStyle="width:200px;">
-                <f:validator binding="#{bindings.Job1.validator}"/>
+                                    popupTitle="Search and Select: #{bindings.Job.hints.label}"
+                                    value="#{bindings.Job.inputValue}"
+                                    label="#{bindings.Job.hints.label}"
+                                    model="#{bindings.Job.listOfValuesModel}"
+                                    required="#{bindings.Job.hints.mandatory}"
+                                    columns="#{bindings.Job.hints.displayWidth}"
+                                    shortDesc="#{bindings.Job.hints.tooltip}"
+                                    contentStyle="width:200px;"
+                                    autoSubmit="true">
+                <f:validator binding="#{bindings.Job.validator}"/>
               </af:inputListOfValues>
-              <af:inputText value="#{bindings.JobQuantity1.inputValue}"
-                            label="Job Quantity"
-                            required="#{bindings.JobQuantity1.hints.mandatory}"
-                            columns="#{bindings.JobQuantity1.hints.displayWidth}"
-                            maximumLength="#{bindings.JobQuantity1.hints.precision}"
-                            shortDesc="#{bindings.JobQuantity1.hints.tooltip}"
-                            id="it5" contentStyle="width:200px;"
-                            readOnly="true" partialTriggers="jobId">
-                <f:validator binding="#{bindings.JobQuantity1.validator}"/>
+              <af:inputText value="#{bindings.JobQuantity.inputValue}"
+                            label="#{bindings.JobQuantity.hints.label}"
+                            required="#{bindings.JobQuantity.hints.mandatory}"
+                            columns="#{bindings.JobQuantity.hints.displayWidth}"
+                            maximumLength="#{bindings.JobQuantity.hints.precision}"
+                            shortDesc="#{bindings.JobQuantity.hints.tooltip}"
+                            id="it2" readOnly="true" partialTriggers="jobId">
+                <f:validator binding="#{bindings.JobQuantity.validator}"/>
                 <af:convertNumber groupingUsed="false"
-                                  pattern="#{bindings.JobQuantity1.format}"/>
+                                  pattern="#{bindings.JobQuantity.format}"/>
               </af:inputText>
-              <af:inputText value="#{bindings.StitchQuantity1.inputValue}"
+              <af:inputText value="#{bindings.StitchQuantity.inputValue}"
                             label="Stitching Quantity"
-                            required="#{bindings.StitchQuantity1.hints.mandatory}"
-                            columns="#{bindings.StitchQuantity1.hints.displayWidth}"
-                            maximumLength="#{bindings.StitchQuantity1.hints.precision}"
-                            shortDesc="#{bindings.StitchQuantity1.hints.tooltip}"
-                            id="it6" contentStyle="width:200px;"
-                            readOnly="true" partialTriggers="jobId">
-                <f:validator binding="#{bindings.StitchQuantity1.validator}"/>
+                            required="#{bindings.StitchQuantity.hints.mandatory}"
+                            columns="#{bindings.StitchQuantity.hints.displayWidth}"
+                            maximumLength="#{bindings.StitchQuantity.hints.precision}"
+                            shortDesc="#{bindings.StitchQuantity.hints.tooltip}"
+                            id="it3" readOnly="true" partialTriggers="jobId">
+                <f:validator binding="#{bindings.StitchQuantity.validator}"/>
                 <af:convertNumber groupingUsed="false"
-                                  pattern="#{bindings.StitchQuantity1.format}"/>
+                                  pattern="#{bindings.StitchQuantity.format}"/>
               </af:inputText>
               <af:separator id="s1" inlineStyle="height:10px;"/>
               <af:toolbar id="t1">

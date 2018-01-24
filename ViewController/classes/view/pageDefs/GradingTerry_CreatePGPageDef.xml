@@ -5,52 +5,52 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="PwcOdmNGGradingHeadersVO1" RangeSize="25"
+    <iterator Binds="PwcOdmNGGradingHeadersVO2" RangeSize="25"
               DataControl="PwcOdmGradingTerryAMDataControl"
-              id="PwcOdmNGGradingHeadersVO1Iterator"/>
+              id="PwcOdmNGGradingHeadersVO2Iterator"/>
   </executables>
   <bindings>
     <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
             DataControl="PwcOdmGradingTerryAMDataControl"/>
     <listOfValues StaticList="false"
-                  IterBinding="PwcOdmNGGradingHeadersVO1Iterator"
+                  IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
                   Uses="LOV_CustPoNumber" id="CustPoNumber"/>
     <listOfValues StaticList="false"
-                  IterBinding="PwcOdmNGGradingHeadersVO1Iterator"
+                  IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
                   Uses="LOV_SalesOrderNumber" id="SalesOrderNumber"/>
     <listOfValues StaticList="false"
-                  IterBinding="PwcOdmNGGradingHeadersVO1Iterator"
+                  IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
                   Uses="LOV_ItemCode" id="ItemCode"/>
-    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO1Iterator"
-                     id="ItemDescription1">
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="ItemDescription">
       <AttrNames>
         <Item Value="ItemDescription"/>
       </AttrNames>
     </attributeValues>
-    <listOfValues StaticList="false"
-                  IterBinding="PwcOdmNGGradingHeadersVO1Iterator" Uses="LOV_Job"
-                  id="Job1"/>
-    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO1Iterator"
-                     id="JobQuantity1">
-      <AttrNames>
-        <Item Value="JobQuantity"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO1Iterator"
-                     id="StitchQuantity1">
-      <AttrNames>
-        <Item Value="StitchQuantity"/>
-      </AttrNames>
-    </attributeValues>
-    <action IterBinding="PwcOdmNGGradingHeadersVO1Iterator" id="CreateInsert"
-            RequiresUpdateModel="true" Action="createInsertRow"/>
-    <action IterBinding="PwcOdmNGGradingHeadersVO1Iterator" id="Delete"
-            RequiresUpdateModel="false" Action="removeCurrentRow"/>
-    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO1Iterator"
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
                      id="GdDate">
       <AttrNames>
         <Item Value="GdDate"/>
       </AttrNames>
     </attributeValues>
+    <listOfValues StaticList="false"
+                  IterBinding="PwcOdmNGGradingHeadersVO2Iterator" Uses="LOV_Job"
+                  id="Job"/>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="JobQuantity">
+      <AttrNames>
+        <Item Value="JobQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="StitchQuantity">
+      <AttrNames>
+        <Item Value="StitchQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="PwcOdmNGGradingHeadersVO2Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="PwcOdmNGGradingHeadersVO2Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
   </bindings>
 </pageDefinition>
