@@ -27,9 +27,6 @@
     <listOfValues StaticList="false"
                   IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
                   Uses="LOV_SalesOrderNumber" id="SalesOrderNumber"/>
-    <listOfValues StaticList="false"
-                  IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
-                  Uses="LOV_ItemCode" id="ItemCode"/>
     <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
                      id="ItemDescription">
       <AttrNames>
@@ -137,5 +134,11 @@
       <NamedData NDName="respAppl" NDValue="#{viewScope.RespApplId}"
                  NDType="java.lang.String"/>
     </methodAction>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="ItemCode">
+      <AttrNames>
+        <Item Value="ItemCode"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

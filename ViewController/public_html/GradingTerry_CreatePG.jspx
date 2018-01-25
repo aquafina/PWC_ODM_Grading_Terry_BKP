@@ -53,25 +53,23 @@
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.SalesOrderNumber.format}"/>
               </af:inputListOfValues>
-              <af:inputListOfValues id="itemCodeId"
-                                    popupTitle="Search and Select: #{bindings.ItemCode.hints.label}"
-                                    value="#{bindings.ItemCode.inputValue}"
-                                    label="Item Code"
-                                    model="#{bindings.ItemCode.listOfValuesModel}"
-                                    required="#{bindings.ItemCode.hints.mandatory}"
-                                    columns="#{bindings.ItemCode.hints.displayWidth}"
-                                    shortDesc="#{bindings.ItemCode.hints.tooltip}"
-                                    contentStyle="width:200px;"
-                                    autoSubmit="true">
+              <af:inputText value="#{bindings.ItemCode.inputValue}"
+                            label="Item Code"
+                            required="#{bindings.ItemCode.hints.mandatory}"
+                            columns="#{bindings.ItemCode.hints.displayWidth}"
+                            maximumLength="#{bindings.ItemCode.hints.precision}"
+                            shortDesc="#{bindings.ItemCode.hints.tooltip}"
+                            id="itemCodeId" readOnly="true"
+                            partialTriggers="jobId">
                 <f:validator binding="#{bindings.ItemCode.validator}"/>
-              </af:inputListOfValues>
+              </af:inputText>
               <af:inputText value="#{bindings.ItemDescription.inputValue}"
                             label="Item Description"
                             required="#{bindings.ItemDescription.hints.mandatory}"
                             columns="#{bindings.ItemDescription.hints.displayWidth}"
                             maximumLength="#{bindings.ItemDescription.hints.precision}"
                             shortDesc="#{bindings.ItemDescription.hints.tooltip}"
-                            id="it1" partialTriggers="itemCodeId"
+                            id="it1" partialTriggers="jobId"
                             contentStyle="width:200px" readOnly="true">
                 <f:validator binding="#{bindings.ItemDescription.validator}"/>
               </af:inputText>
