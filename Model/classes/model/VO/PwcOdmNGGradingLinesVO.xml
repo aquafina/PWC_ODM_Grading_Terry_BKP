@@ -43,9 +43,6 @@
   CustomQuery="false"
   PageIterMode="Full"
   UseGlueCode="false">
-  <DesignTime>
-    <Attr Name="_codeGenFlag2" Value="VarAccess"/>
-  </DesignTime>
   <ViewAccessor
     Name="PwcOdmGradingStitchingLineId1"
     ViewObjectName="model.LOV.PwcOdmGradingStitchingLineId"

@@ -7,7 +7,9 @@
   Version="11.1.1.64.93"
   InheritPersonalization="true"
   ClearCacheOnRollback="true"
-  ComponentClass="model.AM.PwcOdmGradingTerryAMImpl">
+  ComponentClass="model.AM.PwcOdmGradingTerryAMImpl"
+  ComponentInterface="model.AM.common.PwcOdmGradingTerryAM"
+  ClientProxyName="model.AM.client.PwcOdmGradingTerryAMClient">
   <DesignTime>
     <Attr Name="_deployType" Value="0"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -30,4 +32,23 @@
     SrcViewUsageName="model.AM.PwcOdmGradingTerryAM.PwcOdmNGGradingHeadersVO2"
     DstViewUsageName="model.AM.PwcOdmGradingTerryAM.PwcOdmNGGradingLinesVO2"
     Reversed="false"/>
+  <ClientInterface>
+    <Method
+      Name="setSessionValues">
+      <Return
+        Type="void"/>
+      <Parameter
+        Name="orgId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="userId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="respId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="respAppl"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
 </AppModule>

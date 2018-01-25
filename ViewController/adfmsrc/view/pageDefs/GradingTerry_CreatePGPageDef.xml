@@ -15,6 +15,8 @@
                   Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
                   Binds="PwcOdmNGGradingHeadersVO2Iterator"
                   id="PwcOdmNGGradingHeadersVOCriteriaQuery"/>
+    <invokeAction Binds="setSessionValues" id="setSessionValuesAction"
+                  Refresh="always"/>
   </executables>
   <bindings>
     <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
@@ -120,5 +122,20 @@
         <Item Value="false"/>
       </ValueList>
     </button>
+    <methodAction id="setSessionValues"
+                  InstanceName="PwcOdmGradingTerryAMDataControl.dataProvider"
+                  DataControl="PwcOdmGradingTerryAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="setSessionValues" IsViewObjectMethod="false"
+                  ReturnName="data.PwcOdmGradingTerryAMDataControl.methodResults.setSessionValues_PwcOdmGradingTerryAMDataControl_dataProvider_setSessionValues_result">
+      <NamedData NDName="orgId" NDValue="#{viewScope.OrgId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="userId" NDValue="#{viewScope.UserId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respId" NDValue="#{viewScope.RespId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respAppl" NDValue="#{viewScope.RespApplId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>
