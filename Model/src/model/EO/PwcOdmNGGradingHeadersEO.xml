@@ -10,9 +10,12 @@
   DBObjectName="NG_GRADING_HEADERS"
   AliasName="PwcOdmNGGradingHeadersEO"
   BindingStyle="OracleName"
-  UseGlueCode="false">
+  UseGlueCode="false"
+  RowClass="model.EO.PwcOdmNGGradingHeadersEOImpl">
   <DesignTime>
     <AttrArray Name="_publishEvents"/>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <Attribute
     Name="GdId"

@@ -46,6 +46,39 @@
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="VarAccess"/>
   </DesignTime>
+  <Variable
+    Name="p_cust_po_no"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_sales_order_no"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_job_name"
+    Kind="viewcriteria"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
   <ViewAccessor
     Name="PwcOdmGradingSalesOrderNoVO1"
     ViewObjectName="model.LOV.PwcOdmGradingSalesOrderNoVO">
@@ -190,6 +223,8 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="input_text_lov"/>
+        <DISPLAYWIDTH
+          Value="30"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -236,6 +271,8 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="input_text_lov"/>
+        <DISPLAYWIDTH
+          Value="30"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -388,6 +425,8 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="input_text_lov"/>
+        <DISPLAYWIDTH
+          Value="30"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -399,7 +438,7 @@
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR">
+    SQLType="NUMERIC">
     <TransientExpression><![CDATA[PwcOdmNGGradingLinesVO.sum("TotalQuantity")]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
@@ -410,7 +449,7 @@
     Type="oracle.jbo.domain.Number"
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR">
+    SQLType="NUMERIC">
     <TransientExpression><![CDATA[PwcOdmNGGradingLinesVO.sum("Gradea")]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
@@ -421,7 +460,7 @@
     Type="oracle.jbo.domain.Number"
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR">
+    SQLType="NUMERIC">
     <TransientExpression><![CDATA[PwcOdmNGGradingLinesVO.sum("Gradeb")]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
@@ -432,7 +471,7 @@
     Type="oracle.jbo.domain.Number"
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR">
+    SQLType="NUMERIC">
     <TransientExpression><![CDATA[PwcOdmNGGradingLinesVO.sum("Gradec")]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
@@ -443,9 +482,61 @@
     Type="oracle.jbo.domain.Number"
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR">
+    SQLType="NUMERIC">
     <TransientExpression><![CDATA[PwcOdmNGGradingLinesVO.sum("Rewash")]]></TransientExpression>
   </ViewAttribute>
+  <ViewCriteria
+    Name="PwcOdmNGGradingHeadersVOCriteria"
+    ViewObjectName="model.VO.PwcOdmNGGradingHeadersVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow17"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="SalesOrderNumber"
+        ViewAttribute="SalesOrderNumber"
+        Operator="="
+        Conjunction="AND"
+        Value=":p_sales_order_no"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Job"
+        ViewAttribute="Job"
+        Operator="="
+        Conjunction="OR"
+        Value=":p_job_name"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="CustPoNumber"
+        ViewAttribute="CustPoNumber"
+        Operator="="
+        Conjunction="OR"
+        Value=":p_cust_po_no"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ViewLinkAccessor
     Name="PwcOdmNGGradingLinesVO"
     ViewLink="model.VL.PwcOdmNGGradingHdrsLinesVL"

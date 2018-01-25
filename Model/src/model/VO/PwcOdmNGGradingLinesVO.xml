@@ -274,7 +274,7 @@
     EntityUsage="PwcOdmNGGradingLinesEO"
     AliasName="REWASH"/>
   <ViewAttribute
-    Name="ReturnFlag"
+    Name="SelectedRow"
     IsSelected="false"
     IsPersistent="false"
     PrecisionRule="true"

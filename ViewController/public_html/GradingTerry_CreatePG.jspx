@@ -9,13 +9,23 @@
       <af:messages id="m1"/>
       <af:form id="f1" styleClass="width:100%;">
         <af:panelGroupLayout id="pgl1" styleClass="width:100%;">
-          <af:panelHeader text="Create / Edit" id="ph1">
+          <af:panelGroupLayout layout="vertical" id="pgl8">
+            <af:panelHeader text="Search Grading Terry" id="ph2">
+              <af:query id="qryId1" headerText="Search" disclosed="true"
+                        value="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery.queryDescriptor}"
+                        model="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery.queryModel}"
+                        queryListener="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery.processQuery}"
+                        queryOperationListener="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery.processQueryOperation}"/>
+            </af:panelHeader>
+          </af:panelGroupLayout>
+          <af:panelHeader text="Create / Edit Grading Terry" id="ph1">
             <f:facet name="context"/>
             <f:facet name="menuBar"/>
             <f:facet name="toolbar"/>
             <f:facet name="legend"/>
             <f:facet name="info"/>
-            <af:panelFormLayout id="pfl1" maxColumns="2" rows="5">
+            <af:panelFormLayout id="pfl1" maxColumns="2" rows="5"
+                                partialTriggers="qryId1">
               <f:facet name="footer"/>
               <af:inputListOfValues id="custPoNumberId"
                                     popupTitle="Search and Select: #{bindings.CustPoNumber.hints.label}"
@@ -115,7 +125,7 @@
                                   id="cb1"/>
                 <af:commandButton actionListener="#{bindings.Commit.execute}"
                                   text="Save"
-                                  disabled="#{!bindings.Commit.enabled}"
+                                  disabled="false"
                                   id="cb2"/>
                 <af:commandButton actionListener="#{bindings.Delete.execute}"
                                   text="Delete"
@@ -133,9 +143,9 @@
                                 id="cb4"/>
               <af:commandButton actionListener="#{bindings.Commit.execute}"
                                 text="Save"
-                                disabled="#{!bindings.Commit.enabled}"
+                                disabled="false"
                                 id="cb5"/>
-              <af:commandButton actionListener="#{bindings.Delete1.execute}"
+              <af:commandButton actionListener="#{backingBeanScope.PwcGradingTerryBean.deleteSelectedRows}"
                                 text="Delete"
                                 disabled="#{!bindings.Delete1.enabled}"
                                 id="cb6"/>
@@ -150,10 +160,17 @@
                       autoHeightRows="-1" filterVisible="true"
                       rowSelection="multiple">
               <af:column id="column1" align="center" width="53">
-                <af:selectBooleanCheckbox value="#{row.bindings.ReturnFlag.inputValue}"
-                                          label="#{row.bindings.ReturnFlag.label}"
-                                          shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.RetrunFlag.tooltip}"
+                <af:selectBooleanCheckbox value="#{row.bindings.SelectedRow.inputValue}"
+                                          label="#{row.bindings.SelectedRow.label}"
+                                          shortDesc="#{bindings.PwcOdmNGGradingLinesVO2.hints.SelectedRow.tooltip}"
                                           id="sbc1"/>
+                <f:facet name="footer">
+                  <af:panelGroupLayout id="pgl4" halign="center"
+                                       layout="horizontal">
+                    <af:outputText value="Total" id="ot3"
+                                   inlineStyle="font-weight:bold;"/>
+                  </af:panelGroupLayout>
+                </f:facet>
               </af:column>
               <af:column sortProperty="#{bindings.PwcOdmNGGradingLinesVO2.hints.StitchingLineId.name}"
                          sortable="false" headerText="Sr No" id="c8"
@@ -162,13 +179,7 @@
                   <af:convertNumber groupingUsed="false"
                                     pattern="#{bindings.PwcOdmNGGradingLinesVO2.hints.StitchingLineId.format}"/>
                 </af:outputText>
-                <f:facet name="footer">
-                  <af:panelGroupLayout id="pgl4" halign="center"
-                                       layout="horizontal">
-                    <af:outputText value="Total" id="ot3"
-                                   inlineStyle="font-weight:bold;"/>
-                  </af:panelGroupLayout>
-                </f:facet>
+                <f:facet name="footer"/>
               </af:column>
               <af:column id="c9" headerText="Stitching Number" align="center">
                 <af:inputListOfValues id="stitchingLineNoId"
