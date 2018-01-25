@@ -6,45 +6,14 @@
   Name="PwcOdmNGGradingHeadersVO"
   Version="11.1.1.64.93"
   InheritPersonalization="true"
-  SelectList="PwcOdmNGGradingHeadersEO.GD_ID, 
-       PwcOdmNGGradingHeadersEO.SALES_ORDER_NUMBER, 
-       PwcOdmNGGradingHeadersEO.ITEM_ID, 
-       PwcOdmNGGradingHeadersEO.ITEM_CODE, 
-       PwcOdmNGGradingHeadersEO.ITEM_DESCRIPTION, 
-       PwcOdmNGGradingHeadersEO.GD_DATE, 
-       PwcOdmNGGradingHeadersEO.JOB, 
-       PwcOdmNGGradingHeadersEO.JOB_QUANTITY, 
-       PwcOdmNGGradingHeadersEO.CREATED_BY, 
-       PwcOdmNGGradingHeadersEO.CREATION_DATE, 
-       PwcOdmNGGradingHeadersEO.LAST_UPDATED_BY, 
-       PwcOdmNGGradingHeadersEO.LAST_UPDATED_DATE, 
-       PwcOdmNGGradingHeadersEO.LAST_UPDATED_LOGIN, 
-       PwcOdmNGGradingHeadersEO.ORG_ID, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE1, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE2, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE3, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE4, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE5, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE6, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE7, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE8, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE9, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE10, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE11, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE12, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE13, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE14, 
-       PwcOdmNGGradingHeadersEO.ATTRIBUTE15, 
-       PwcOdmNGGradingHeadersEO.STITCH_QUANTITY, 
-       PwcOdmNGGradingHeadersEO.CUST_PO_NUMBER"
-  FromList="NG_GRADING_HEADERS PwcOdmNGGradingHeadersEO"
   BindingStyle="OracleName"
-  CustomQuery="false"
+  CustomQuery="true"
   FetchMode="FETCH_AS_NEEDED"
   PageIterMode="Full"
   UseGlueCode="false">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
   </DesignTime>
   <Variable
     Name="p_cust_po_no"
@@ -171,11 +140,15 @@
     <AttrArray Name="DerivedAttrNames">
       <Item Value="JobQuantity"/>
       <Item Value="StitchQuantity"/>
+      <Item Value="ItemCode"/>
+      <Item Value="ItemDescription"/>
     </AttrArray>
     <AttrArray Name="ListAttrNames">
       <Item Value="WipEntityName"/>
       <Item Value="JobQuantity"/>
       <Item Value="StitchingQuantity"/>
+      <Item Value="ConcatenatedSegments"/>
+      <Item Value="Description"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="WipEntityId"/>
@@ -202,6 +175,40 @@
     <DisplayCriteria
       Hint="showAndExecute"/>
   </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT PwcOdmNGGradingHeadersEO.GD_ID, 
+       PwcOdmNGGradingHeadersEO.SALES_ORDER_NUMBER, 
+       PwcOdmNGGradingHeadersEO.ITEM_ID, 
+       PwcOdmNGGradingHeadersEO.ITEM_CODE, 
+       PwcOdmNGGradingHeadersEO.ITEM_DESCRIPTION, 
+       PwcOdmNGGradingHeadersEO.GD_DATE, 
+       PwcOdmNGGradingHeadersEO.JOB, 
+       PwcOdmNGGradingHeadersEO.JOB_QUANTITY, 
+       PwcOdmNGGradingHeadersEO.CREATED_BY, 
+       PwcOdmNGGradingHeadersEO.CREATION_DATE, 
+       PwcOdmNGGradingHeadersEO.LAST_UPDATED_BY, 
+       PwcOdmNGGradingHeadersEO.LAST_UPDATED_DATE, 
+       PwcOdmNGGradingHeadersEO.LAST_UPDATED_LOGIN, 
+       PwcOdmNGGradingHeadersEO.ORG_ID, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE1, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE2, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE3, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE4, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE5, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE6, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE7, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE8, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE9, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE10, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE11, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE12, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE13, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE14, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE15, 
+       PwcOdmNGGradingHeadersEO.STITCH_QUANTITY, 
+       PwcOdmNGGradingHeadersEO.CUST_PO_NUMBER
+FROM PWC_ODM_GRADING_TERRY_HEADERS PwcOdmNGGradingHeadersEO]]>
+  </SQLQuery>
   <EntityUsage
     Name="PwcOdmNGGradingHeadersEO"
     Entity="model.EO.PwcOdmNGGradingHeadersEO"/>
@@ -269,10 +276,10 @@
     AliasName="JOB">
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="input_text_lov"/>
         <DISPLAYWIDTH
           Value="30"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>

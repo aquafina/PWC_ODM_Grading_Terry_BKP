@@ -7,7 +7,7 @@
   Version="11.1.1.64.93"
   InheritPersonalization="true"
   DBObjectType="table"
-  DBObjectName="NG_GRADING_LINES"
+  DBObjectName="PWC_ODM_GRADING_TERRY_LINES"
   AliasName="PwcOdmNGGradingLinesEO"
   BindingStyle="OracleName"
   UseGlueCode="false"
@@ -24,7 +24,7 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="NG_GRADING_LINES"
+    TableName="PWC_ODM_GRADING_TERRY_LINES"
     PrimaryKey="true"
     RetrievedOnInsert="true">
     <DesignTime>
@@ -38,7 +38,7 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
@@ -49,7 +49,7 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
@@ -60,7 +60,7 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
@@ -71,7 +71,7 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
@@ -82,7 +82,7 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
@@ -93,7 +93,7 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
@@ -105,7 +105,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="200"/>
     </DesignTime>
@@ -116,7 +116,7 @@
     SQLType="TIMESTAMP"
     Type="oracle.jbo.domain.Timestamp"
     ColumnType="TIMESTAMP"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -127,7 +127,7 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
@@ -138,7 +138,7 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
@@ -149,7 +149,7 @@
     SQLType="TIMESTAMP"
     Type="oracle.jbo.domain.Timestamp"
     ColumnType="TIMESTAMP"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -160,7 +160,7 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
@@ -172,7 +172,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -184,7 +184,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -196,7 +196,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -208,7 +208,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -220,7 +220,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -232,7 +232,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -244,7 +244,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -256,7 +256,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -268,7 +268,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -280,7 +280,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -292,7 +292,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -304,7 +304,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -316,7 +316,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -328,7 +328,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -340,7 +340,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -351,7 +351,7 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
@@ -363,7 +363,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="250"/>
     </DesignTime>
@@ -375,7 +375,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="5"/>
     </DesignTime>
@@ -386,7 +386,7 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="NG_GRADING_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>

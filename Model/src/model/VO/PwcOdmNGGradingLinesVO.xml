@@ -6,7 +6,38 @@
   Name="PwcOdmNGGradingLinesVO"
   Version="11.1.1.64.93"
   InheritPersonalization="true"
-  SelectList="PwcOdmNGGradingLinesEO.STITCHING_LINE_ID, 
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="PwcOdmGradingStitchingLineId1"
+    ViewObjectName="model.LOV.PwcOdmGradingStitchingLineId"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_StitchingLineNo"
+    ListVOName="PwcOdmGradingStitchingLineId1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_StitchingLineNo_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="StitchingLineNo"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="StitchingLineNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StitchingLineNumber"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT PwcOdmNGGradingLinesEO.STITCHING_LINE_ID, 
        PwcOdmNGGradingLinesEO.STITCHING_LINE_NO, 
        PwcOdmNGGradingLinesEO.GD_ID, 
        PwcOdmNGGradingLinesEO.TOTAL_QUANTITY, 
@@ -37,35 +68,9 @@
        PwcOdmNGGradingLinesEO.ORG_ID, 
        PwcOdmNGGradingLinesEO.STITCHING_LINE_NUMBER, 
        PwcOdmNGGradingLinesEO.RETRUN_FLAG, 
-       PwcOdmNGGradingLinesEO.REWASH"
-  FromList="NG_GRADING_LINES PwcOdmNGGradingLinesEO"
-  BindingStyle="OracleName"
-  CustomQuery="false"
-  PageIterMode="Full"
-  UseGlueCode="false">
-  <ViewAccessor
-    Name="PwcOdmGradingStitchingLineId1"
-    ViewObjectName="model.LOV.PwcOdmGradingStitchingLineId"
-    RowLevelBinds="true"/>
-  <ListBinding
-    Name="LOV_StitchingLineNo"
-    ListVOName="PwcOdmGradingStitchingLineId1"
-    ListRangeSize="10"
-    NullValueFlag="none"
-    NullValueId="LOV_StitchingLineNo_LOVUIHints_NullValueId"
-    MRUCount="0">
-    <AttrArray Name="AttrNames">
-      <Item Value="StitchingLineNo"/>
-    </AttrArray>
-    <AttrArray Name="ListAttrNames">
-      <Item Value="StitchingLineNumber"/>
-    </AttrArray>
-    <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="StitchingLineNumber"/>
-    </AttrArray>
-    <DisplayCriteria
-      Hint="showAndExecute"/>
-  </ListBinding>
+       PwcOdmNGGradingLinesEO.REWASH
+FROM PWC_ODM_GRADING_TERRY_LINES PwcOdmNGGradingLinesEO]]>
+  </SQLQuery>
   <EntityUsage
     Name="PwcOdmNGGradingLinesEO"
     Entity="model.EO.PwcOdmNGGradingLinesEO"/>
@@ -278,7 +283,7 @@
     Type="java.lang.Boolean"
     ColumnType="NUMBER"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"/>
+    SQLType="BIT"/>
   <ViewLinkAccessor
     Name="PwcOdmNGGradingHeadersVO"
     ViewLink="model.VL.PwcOdmNGGradingHdrsLinesVL"
