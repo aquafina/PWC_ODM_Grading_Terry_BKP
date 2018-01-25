@@ -114,8 +114,8 @@
     Name="CreationDate"
     ColumnName="CREATION_DATE"
     SQLType="TIMESTAMP"
-    Type="oracle.jbo.domain.Date"
-    ColumnType="DATE"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
     TableName="NG_GRADING_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
@@ -147,8 +147,8 @@
     Name="LastUpdatedDate"
     ColumnName="LAST_UPDATED_DATE"
     SQLType="TIMESTAMP"
-    Type="oracle.jbo.domain.Date"
-    ColumnType="DATE"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
     TableName="NG_GRADING_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>

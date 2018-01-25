@@ -1,5 +1,9 @@
 package model.AM;
 
+import model.AM.common.PwcOdmGradingTerryAM;
+
+import oracle.adf.share.ADFContext;
+
 import oracle.jbo.server.ApplicationModuleImpl;
 import oracle.jbo.server.ViewLinkImpl;
 import oracle.jbo.server.ViewObjectImpl;
@@ -9,7 +13,16 @@ import oracle.jbo.server.ViewObjectImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class PwcOdmGradingTerryAMImpl extends ApplicationModuleImpl {
+public class PwcOdmGradingTerryAMImpl extends ApplicationModuleImpl implements PwcOdmGradingTerryAM {
+    
+    public void setSessionValues(String orgId, String userId, String respId,
+                                 String respAppl) {
+        System.out.println("orgid = "+orgId);
+        ADFContext.getCurrent().getSessionScope().put("user_id", userId);
+        ADFContext.getCurrent().getSessionScope().put("org_id", orgId);
+        ADFContext.getCurrent().getSessionScope().put("resp_id", respId);
+        ADFContext.getCurrent().getSessionScope().put("resp_appl_id", respAppl);
+    }
     /**
      * This is the default constructor (do not remove).
      */
