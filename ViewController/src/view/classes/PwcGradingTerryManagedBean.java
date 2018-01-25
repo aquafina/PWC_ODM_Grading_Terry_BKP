@@ -177,7 +177,7 @@ public class PwcGradingTerryManagedBean {
         while (rsi.next()!=null) {
             Row currRow = rsi.getCurrentRow();
             if ((Boolean)currRow.getAttribute("SelectedRow")==true)
-                currRow.remove();
+                    currRow.remove();
         }
         rsi.closeRowSetIterator();
         am.getDBTransaction().commit();

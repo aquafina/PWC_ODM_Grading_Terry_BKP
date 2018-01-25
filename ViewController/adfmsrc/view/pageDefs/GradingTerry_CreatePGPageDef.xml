@@ -11,6 +11,10 @@
     <iterator Binds="PwcOdmNGGradingLinesVO2" RangeSize="25"
               DataControl="PwcOdmGradingTerryAMDataControl"
               id="PwcOdmNGGradingLinesVO2Iterator"/>
+    <searchRegion Criteria="PwcOdmNGGradingHeadersVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="PwcOdmNGGradingHeadersVO2Iterator"
+                  id="PwcOdmNGGradingHeadersVOCriteriaQuery"/>
   </executables>
   <bindings>
     <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
@@ -68,6 +72,7 @@
           <Item Value="Rewash"/>
           <Item Value="Remarks"/>
           <Item Value="StitchingLineId"/>
+          <Item Value="SelectedRow" Binds="SelectedRow"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -105,5 +110,15 @@
         <Item Value="SumGradeB"/>
       </AttrNames>
     </attributeValues>
+    <button IterBinding="PwcOdmNGGradingLinesVO2Iterator" id="SelectedRow"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="SelectedRow"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
   </bindings>
 </pageDefinition>
