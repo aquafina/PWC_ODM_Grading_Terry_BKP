@@ -55,6 +55,9 @@
       <PIMap Variable="p_cust_po_no">
         <TransientExpression><![CDATA[CustPoNumber]]></TransientExpression>
       </PIMap>
+      <PIMap Variable="p_org_id">
+        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+      </PIMap>
     </ParameterMap>
   </ViewAccessor>
   <ViewAccessor
@@ -71,6 +74,9 @@
       <PIMap Variable="p_cust_po_no">
         <TransientExpression><![CDATA[CustPoNumber]]></TransientExpression>
       </PIMap>
+      <PIMap Variable="p_org_id">
+        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+      </PIMap>
     </ParameterMap>
   </ViewAccessor>
   <ViewAccessor
@@ -79,6 +85,9 @@
     <ParameterMap>
       <PIMap Variable="p_order_no">
         <TransientExpression><![CDATA[SalesOrderNumber]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_org_id">
+        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
@@ -232,6 +241,8 @@ FROM PWC_ODM_GRADING_TERRY_HEADERS PwcOdmNGGradingHeadersEO]]>
           Value="input_text_lov"/>
         <DISPLAYWIDTH
           Value="30"/>
+        <LABEL
+          ResId="model.VO.PwcOdmNGGradingHeadersVO.SalesOrderNumber_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -288,7 +299,14 @@ FROM PWC_ODM_GRADING_TERRY_HEADERS PwcOdmNGGradingHeadersEO]]>
     PrecisionRule="true"
     EntityAttrName="JobQuantity"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="JOB_QUANTITY"/>
+    AliasName="JOB_QUANTITY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PwcOdmNGGradingHeadersVO.JobQuantity_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreatedBy"
     PrecisionRule="true"
@@ -434,6 +452,8 @@ FROM PWC_ODM_GRADING_TERRY_HEADERS PwcOdmNGGradingHeadersEO]]>
           Value="input_text_lov"/>
         <DISPLAYWIDTH
           Value="30"/>
+        <LABEL
+          ResId="model.VO.PwcOdmNGGradingHeadersVO.CustPoNumber_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -549,4 +569,8 @@ FROM PWC_ODM_GRADING_TERRY_HEADERS PwcOdmNGGradingHeadersEO]]>
     ViewLink="model.VL.PwcOdmNGGradingHdrsLinesVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>
