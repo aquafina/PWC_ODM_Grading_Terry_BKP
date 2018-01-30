@@ -19,8 +19,6 @@
                   Refresh="always"/>
   </executables>
   <bindings>
-    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
-            DataControl="PwcOdmGradingTerryAMDataControl"/>
     <listOfValues StaticList="false"
                   IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
                   Uses="LOV_CustPoNumber" id="CustPoNumber"/>

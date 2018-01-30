@@ -58,13 +58,16 @@
         ,we.WIP_ENTITY_NAME
         ,msi.concatenated_segments
         ,msi.DESCRIPTION
-        ,sum(mmt.TRANSACTION_QUANTITY) job_quantity    
+        ,wdj.ATTRIBUTE11 cust_po_number
+        ,ooha.ORDER_NUMBER Sales_order_number
+        ,sum(wdj.START_QUANTITY) job_quantity    
         ,sum(wdj.QUANTITY_COMPLETED) stitching_quantity
 from   wip_discrete_jobs wdj
        ,wip_entities we
        ,mtl_material_transactions mmt
        ,mtl_transaction_types  mtt
        ,mtl_system_items_KFV msi
+       ,oe_order_headers_all ooha 
 where  we.WIP_ENTITY_ID = wdj.WIP_ENTITY_ID
 and    mmt.TRANSACTION_SOURCE_ID = wdj.WIP_ENTITY_ID
 and    mmt.TRANSACTION_TYPE_ID = mtt.TRANSACTION_TYPE_ID
@@ -72,10 +75,11 @@ and    upper(mtt.TRANSACTION_TYPE_NAME) = 'WIP COMPLETION'
 and wdj.status_type in (3,4)
 and mmt.INVENTORY_ITEM_ID = msi.INVENTORY_ITEM_ID
 and mmt.ORGANIZATION_ID = msi.ORGANIZATION_ID
+and wdj.ATTRIBUTE12 = to_char(ooha.HEADER_ID)
 and wdj.ATTRIBUTE11 = nvl(:p_cust_po_no,wdj.ATTRIBUTE11)
-and wdj.ATTRIBUTE12 = nvl(:p_sales_order,wdj.ATTRIBUTE12)
+and ooha.ORDER_NUMBER = nvl(:p_sales_order,ooha.ORDER_NUMBER)
 and msi.ORGANIZATION_ID = nvl(:p_org_id,msi.ORGANIZATION_ID)                 
-group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION
+group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION ,wdj.ATTRIBUTE11 ,wdj.ATTRIBUTE12,ooha.ORDER_NUMBER
 ORDER BY 3]]>
   </SQLQuery>
   <ViewAttribute
@@ -168,6 +172,42 @@ ORDER BY 3]]>
     </Properties>
   </ViewAttribute>
   <ViewAttribute
+    Name="CustPoNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUST_PO_NUMBER"
+    Expression="CUST_PO_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SalesOrderNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="SALES_ORDER_NUMBER"
+    Expression="SALES_ORDER_NUMBER"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
     Name="JobQuantity"
     IsUpdateable="false"
     IsPersistent="false"
@@ -194,6 +234,12 @@ ORDER BY 3]]>
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
   </ViewAttribute>
   <AttrArray Name="KeyAttributes">
     <Item Value="WipEntityId"/>
