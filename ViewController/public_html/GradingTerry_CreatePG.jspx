@@ -36,7 +36,8 @@
                                     columns="#{bindings.CustPoNumber.hints.displayWidth}"
                                     shortDesc="#{bindings.CustPoNumber.hints.tooltip}"
                                     autoSubmit="true"
-                                    contentStyle="width:200px;">
+                                    contentStyle="width:200px;"
+                                    partialTriggers="jobId">
                 <f:validator binding="#{bindings.CustPoNumber.validator}"/>
               </af:inputListOfValues>
               <af:inputListOfValues id="salesOrderNumberId"
@@ -48,7 +49,8 @@
                                     columns="#{bindings.SalesOrderNumber.hints.displayWidth}"
                                     shortDesc="#{bindings.SalesOrderNumber.hints.tooltip}"
                                     autoSubmit="true"
-                                    contentStyle="width:200px;">
+                                    contentStyle="width:200px;"
+                                    partialTriggers="jobId">
                 <f:validator binding="#{bindings.SalesOrderNumber.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.SalesOrderNumber.format}"/>
@@ -74,7 +76,7 @@
                 <f:validator binding="#{bindings.ItemDescription.validator}"/>
               </af:inputText>
               <af:inputDate value="#{bindings.GdDate.inputValue}"
-                            label="#{bindings.GdDate.hints.label}"
+                            label="Date"
                             required="#{bindings.GdDate.hints.mandatory}"
                             shortDesc="#{bindings.GdDate.hints.tooltip}"
                             id="id1" contentStyle="width:200px;">
@@ -121,10 +123,11 @@
                                   text="New"
                                   disabled="#{!bindings.CreateInsert.enabled}"
                                   id="cb1"/>
-                <af:commandButton actionListener="#{bindings.Commit.execute}"
+                <af:commandButton
                                   text="Save"
                                   disabled="false"
-                                  id="cb2"/>
+                                  id="cb2"
+                                  actionListener="#{backingBeanScope.PwcGradingTerryBean.validateAndSaveChanges}"/>
                 <af:commandButton actionListener="#{bindings.Delete.execute}"
                                   text="Delete"
                                   disabled="#{!bindings.Delete.enabled}"
@@ -139,14 +142,12 @@
                                 text="Insert"
                                 disabled="#{!bindings.CreateInsert1.enabled}"
                                 id="cb4"/>
-              <af:commandButton actionListener="#{bindings.Commit.execute}"
-                                text="Save"
-                                disabled="false"
-                                id="cb5"/>
               <af:commandButton actionListener="#{backingBeanScope.PwcGradingTerryBean.deleteSelectedRows}"
                                 text="Delete"
                                 disabled="#{!bindings.Delete1.enabled}"
                                 id="cb6"/>
+              <af:commandButton text="Complete" id="cb7"/>
+              <af:commandButton text="Return" id="cb8"/>
             </af:toolbar>
             <af:table value="#{bindings.PwcOdmNGGradingLinesVO2.collectionModel}"
                       var="row"
@@ -202,7 +203,6 @@
                               maximumLength="#{bindings.PwcOdmNGGradingLinesVO2.hints.TotalQuantity.precision}"
                               shortDesc="#{bindings.PwcOdmNGGradingLinesVO2.hints.TotalQuantity.tooltip}"
                               id="it6"
-                              validator="#{backingBeanScope.PwcGradingTerryBean.totalQtyValidator}"
                               autoSubmit="true" inlineStyle="text-align:right;">
                   <f:validator binding="#{row.bindings.TotalQuantity.validator}"/>
                   <af:convertNumber groupingUsed="false"
@@ -227,8 +227,7 @@
                               columns="#{bindings.PwcOdmNGGradingLinesVO2.hints.Gradea.displayWidth}"
                               maximumLength="#{bindings.PwcOdmNGGradingLinesVO2.hints.Gradea.precision}"
                               shortDesc="#{bindings.PwcOdmNGGradingLinesVO2.hints.Gradea.tooltip}"
-                              id="it7" autoSubmit="true"
-                              validator="#{backingBeanScope.PwcGradingTerryBean.gradeAQtyValidator}">
+                              id="it7" autoSubmit="true">
                   <f:validator binding="#{row.bindings.Gradea.validator}"/>
                   <af:convertNumber groupingUsed="false"
                                     pattern="#{bindings.PwcOdmNGGradingLinesVO2.hints.Gradea.format}"/>
@@ -253,8 +252,7 @@
                               columns="#{bindings.PwcOdmNGGradingLinesVO2.hints.Gradeb.displayWidth}"
                               maximumLength="#{bindings.PwcOdmNGGradingLinesVO2.hints.Gradeb.precision}"
                               shortDesc="#{bindings.PwcOdmNGGradingLinesVO2.hints.Gradeb.tooltip}"
-                              id="it10" autoSubmit="true"
-                              validator="#{backingBeanScope.PwcGradingTerryBean.gradeBQtyValidator}">
+                              id="it10" autoSubmit="true">
                   <f:validator binding="#{row.bindings.Gradeb.validator}"/>
                   <af:convertNumber groupingUsed="false"
                                     pattern="#{bindings.PwcOdmNGGradingLinesVO2.hints.Gradeb.format}"/>
@@ -279,8 +277,7 @@
                               columns="#{bindings.PwcOdmNGGradingLinesVO2.hints.Gradec.displayWidth}"
                               maximumLength="#{bindings.PwcOdmNGGradingLinesVO2.hints.Gradec.precision}"
                               shortDesc="#{bindings.PwcOdmNGGradingLinesVO2.hints.Gradec.tooltip}"
-                              id="it8" autoSubmit="true"
-                              validator="#{backingBeanScope.PwcGradingTerryBean.gradeCQtyValidator}">
+                              id="it8" autoSubmit="true">
                   <f:validator binding="#{row.bindings.Gradec.validator}"/>
                   <af:convertNumber groupingUsed="false"
                                     pattern="#{bindings.PwcOdmNGGradingLinesVO2.hints.Gradec.format}"/>
@@ -306,8 +303,7 @@
                               columns="#{bindings.PwcOdmNGGradingLinesVO2.hints.Rewash.displayWidth}"
                               maximumLength="#{bindings.PwcOdmNGGradingLinesVO2.hints.Rewash.precision}"
                               shortDesc="#{bindings.PwcOdmNGGradingLinesVO2.hints.Rewash.tooltip}"
-                              id="it9" autoSubmit="true"
-                              validator="#{backingBeanScope.PwcGradingTerryBean.rewashQtyValidator}">
+                              id="it9" autoSubmit="true">
                   <f:validator binding="#{row.bindings.Rewash.validator}"/>
                   <af:convertNumber groupingUsed="false"
                                     pattern="#{bindings.PwcOdmNGGradingLinesVO2.hints.Rewash.format}"/>

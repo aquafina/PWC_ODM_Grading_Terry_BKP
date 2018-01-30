@@ -44,11 +44,11 @@
   </Variable>
   <SQLQuery>
     <![CDATA[select ooha.ORDER_NUMBER
- from oe_order_headers_all ooha, oe_order_lines_all oola 
+ from oe_order_headers_all ooha, oe_order_lines_all oola,org_organization_definitions ood 
  where ooha.HEADER_ID = oola.HEADER_ID
+ and ooha.ORG_ID = ood.OPERATING_UNIT
  and ooha.CUST_PO_NUMBER = nvl(:p_cust_po_no,ooha.CUST_PO_NUMBER)
- and ooha.ORG_ID = nvl(:p_org_id, ooha.ORG_ID)
-ORDER BY 1]]>
+ and ood.ORGANIZATION_ID = nvl(:p_org_id,ood.ORGANIZATION_ID)]]>
   </SQLQuery>
   <ViewAttribute
     Name="OrderNumber"

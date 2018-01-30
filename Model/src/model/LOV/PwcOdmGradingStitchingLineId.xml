@@ -24,7 +24,7 @@
     </SchemaBasedProperties>
   </Properties>
   <SQLQuery>
-    <![CDATA[SELECT  ffvv.FLEX_VALUE STITCHING_LINE_NUMBER
+    <![CDATA[SELECT  ffvv.FLEX_VALUE STITCHING_LINE_NUMBER, ffvv.DESCRIPTION
      FROM apps.fnd_flex_values_vl ffvv
           ,apps.fnd_flex_value_sets ffvs
     WHERE ffvv.flex_value_set_id = ffvs.flex_value_set_id
@@ -50,6 +50,27 @@ ORDER BY 1]]>
       <SchemaBasedProperties>
         <LABEL
           ResId="model.LOV.PwcOdmGradingStitchingLineId.StitchingLineNumber_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Description"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESCRIPTION"
+    Expression="DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="30"/>
       </SchemaBasedProperties>

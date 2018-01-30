@@ -151,6 +151,8 @@
       <Item Value="StitchQuantity"/>
       <Item Value="ItemCode"/>
       <Item Value="ItemDescription"/>
+      <Item Value="CustPoNumber"/>
+      <Item Value="SalesOrderNumber"/>
     </AttrArray>
     <AttrArray Name="ListAttrNames">
       <Item Value="WipEntityName"/>
@@ -158,9 +160,14 @@
       <Item Value="StitchingQuantity"/>
       <Item Value="ConcatenatedSegments"/>
       <Item Value="Description"/>
+      <Item Value="CustPoNumber"/>
+      <Item Value="SalesOrderNumber"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="WipEntityId"/>
+      <Item Value="WipEntityName"/>
+      <Item Value="Description"/>
+      <Item Value="ConcatenatedSegments"/>
     </AttrArray>
     <DisplayCriteria
       Hint="showAndExecute"/>

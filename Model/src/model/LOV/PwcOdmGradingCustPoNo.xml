@@ -48,9 +48,11 @@
     <![CDATA[select  oola.CUST_PO_NUMBER 
 from oe_order_headers_all ooha, 
 oe_order_lines_all oola
+,org_organization_definitions ood 
 where  ooha.HEADER_ID = oola.HEADER_ID
+and ooha.ORG_ID = ood.OPERATING_UNIT
 and ooha.ORDER_NUMBER = nvl(:p_order_no,ooha.ORDER_NUMBER)
-and oola.ORG_ID = nvl(:p_org_id,oola.ORG_ID)]]>
+and ood.ORGANIZATION_ID = nvl(:p_org_id,ood.ORGANIZATION_ID)]]>
   </SQLQuery>
   <ViewAttribute
     Name="CustPoNumber"

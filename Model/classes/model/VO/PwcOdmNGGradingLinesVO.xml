@@ -9,9 +9,11 @@
   BindingStyle="OracleName"
   CustomQuery="true"
   PageIterMode="Full"
-  UseGlueCode="false">
+  UseGlueCode="false"
+  ComponentClass="model.VO.PwcOdmNGGradingLinesVOImpl">
   <DesignTime>
     <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Coll|VarAccess"/>
   </DesignTime>
   <ViewAccessor
     Name="PwcOdmGradingStitchingLineId1"
@@ -32,6 +34,7 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="StitchingLineNumber"/>
+      <Item Value="Description"/>
     </AttrArray>
     <DisplayCriteria
       Hint="showAndExecute"/>
