@@ -15,7 +15,8 @@
                         value="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery.queryDescriptor}"
                         model="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery.queryModel}"
                         queryListener="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery.processQuery}"
-                        queryOperationListener="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery.processQueryOperation}"/>
+                        queryOperationListener="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery.processQueryOperation}"
+                        resultComponentId="::pfl1"/>
             </af:panelHeader>
           </af:panelGroupLayout>
           <af:panelHeader text="Create / Edit Grading Terry" id="ph1">

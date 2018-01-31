@@ -48,6 +48,18 @@
       </SchemaBasedProperties>
     </Properties>
   </Variable>
+  <Variable
+    Name="p_org_id"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+  </Variable>
   <ViewAccessor
     Name="PwcOdmGradingSalesOrderNoVO1"
     ViewObjectName="model.LOV.PwcOdmGradingSalesOrderNoVO">
@@ -187,6 +199,8 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="CustPoNumber"/>
+      <Item Value="OrderNumber"/>
+      <Item Value="PartyName"/>
     </AttrArray>
     <DisplayCriteria
       Hint="showAndExecute"/>
@@ -223,7 +237,8 @@
        PwcOdmNGGradingHeadersEO.ATTRIBUTE15, 
        PwcOdmNGGradingHeadersEO.STITCH_QUANTITY, 
        PwcOdmNGGradingHeadersEO.CUST_PO_NUMBER
-FROM PWC_ODM_GRADING_TERRY_HEADERS PwcOdmNGGradingHeadersEO]]>
+FROM PWC_ODM_GRADING_TERRY_HEADERS PwcOdmNGGradingHeadersEO
+where PwcOdmNGGradingHeadersEO.ORG_ID = nvl(:p_org_id,PwcOdmNGGradingHeadersEO.ORG_ID)]]>
   </SQLQuery>
   <EntityUsage
     Name="PwcOdmNGGradingHeadersEO"
@@ -455,12 +470,12 @@ FROM PWC_ODM_GRADING_TERRY_HEADERS PwcOdmNGGradingHeadersEO]]>
     AliasName="CUST_PO_NUMBER">
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="input_text_lov"/>
         <DISPLAYWIDTH
           Value="30"/>
         <LABEL
           ResId="model.VO.PwcOdmNGGradingHeadersVO.CustPoNumber_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
