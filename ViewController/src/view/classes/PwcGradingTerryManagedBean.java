@@ -1,5 +1,9 @@
 package view.classes;
 
+import java.sql.Types;
+
+import java.util.Map;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -19,6 +23,8 @@ import oracle.jbo.Row;
 import oracle.jbo.RowSetIterator;
 import oracle.jbo.ViewObject;
 import oracle.jbo.server.ApplicationModuleImpl;
+
+import oracle.wsm.common.util.CommonUtil;
 
 public class PwcGradingTerryManagedBean {
     public PwcGradingTerryManagedBean() {
@@ -97,99 +103,6 @@ public class PwcGradingTerryManagedBean {
         System.out.println("sumTotalQtyValue = "+sumTotalQtyValue);
     }
     
-    
-    /*public void gradeAQtyValidator(FacesContext facesContext,
-                                   UIComponent uIComponent, Object object) {
-        // Add event code here...
-        Double gradeAQty = Double.parseDouble(object.toString());
-        ApplicationModuleImpl am = getApplicationModule();
-        ViewObject currVO = am.findViewObject("PwcOdmNGGradingLinesVO2");
-        Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
-        Double gradeBQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradeb")!=null?currVO.getCurrentRow().getAttribute("Gradeb").toString():"0.0");
-        Double gradeCQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradec")!=null?currVO.getCurrentRow().getAttribute("Gradec").toString():"0.0");
-        Double rewashQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Rewash")!=null?currVO.getCurrentRow().getAttribute("Rewash").toString():"0.0");
-        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + rewashQty;
-        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
-            if (totalGradeQuantities.compareTo(totalQty)==1) {
-                FacesMessage message =
-                       new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                       "Invalid Value",
-                       "Total Grade Quantities cannot exceed the Total Quantity");
-                       facesContext.addMessage(uIComponent.getClientId(facesContext),
-                       message);
-                ((RichInputText)uIComponent).setValid(false);
-            }
-    } 
-    
-    public void gradeBQtyValidator(FacesContext facesContext,
-                                   UIComponent uIComponent, Object object) {
-        // Add event code here...
-        Double gradeBQty = Double.parseDouble(object.toString());
-        ApplicationModuleImpl am = getApplicationModule();
-        ViewObject currVO = am.findViewObject("PwcOdmNGGradingLinesVO2");
-        Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
-        Double gradeAQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradea")!=null?currVO.getCurrentRow().getAttribute("Gradea").toString():"0.0");
-        Double gradeCQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradec")!=null?currVO.getCurrentRow().getAttribute("Gradec").toString():"0.0");
-        Double rewashQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Rewash")!=null?currVO.getCurrentRow().getAttribute("Rewash").toString():"0.0");
-        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + rewashQty;
-        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
-            if (totalGradeQuantities.compareTo(totalQty)==1) {
-                FacesMessage message =
-                       new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                       "Invalid Value",
-                       "Total Grade Quantities cannot exceed the Total Quantity");
-                       facesContext.addMessage(uIComponent.getClientId(facesContext),
-                       message);
-                ((RichInputText)uIComponent).setValid(false);
-            }
-    } 
-    
-    public void gradeCQtyValidator(FacesContext facesContext,
-                                   UIComponent uIComponent, Object object) {
-        // Add event code here...
-        Double gradeCQty = Double.parseDouble(object.toString());
-        ApplicationModuleImpl am = getApplicationModule();
-        ViewObject currVO = am.findViewObject("PwcOdmNGGradingLinesVO2");
-        Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
-        Double gradeAQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradea")!=null?currVO.getCurrentRow().getAttribute("Gradea").toString():"0.0");
-        Double gradeBQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradeb")!=null?currVO.getCurrentRow().getAttribute("Gradeb").toString():"0.0");
-        Double rewashQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Rewash")!=null?currVO.getCurrentRow().getAttribute("Rewash").toString():"0.0");
-        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + rewashQty;
-        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
-            if (totalGradeQuantities.compareTo(totalQty)==1) {
-                FacesMessage message =
-                       new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                       "Invalid Value",
-                       "Total Grade Quantities cannot exceed the Total Quantity");
-                       facesContext.addMessage(uIComponent.getClientId(facesContext),
-                       message);
-                ((RichInputText)uIComponent).setValid(false);
-            }
-    } 
-    
-    public void rewashQtyValidator(FacesContext facesContext,
-                                   UIComponent uIComponent, Object object) {
-        // Add event code here...
-        Double rewashQty = Double.parseDouble(object.toString());
-        ApplicationModuleImpl am = getApplicationModule();
-        ViewObject currVO = am.findViewObject("PwcOdmNGGradingLinesVO2");
-        Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
-        Double gradeAQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradea")!=null?currVO.getCurrentRow().getAttribute("Gradea").toString():"0.0");
-        Double gradeBQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradeb")!=null?currVO.getCurrentRow().getAttribute("Gradeb").toString():"0.0");
-        Double gradeCQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradec")!=null?currVO.getCurrentRow().getAttribute("Gradec").toString():"0.0");
-        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + rewashQty;
-        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
-            if (totalGradeQuantities.compareTo(totalQty)==1) {
-                FacesMessage message =
-                       new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                       "Invalid Value",
-                       "Total Grade Quantities cannot exceed the Total Quantity");
-                       facesContext.addMessage(uIComponent.getClientId(facesContext),
-                       message);
-                ((RichInputText)uIComponent).setValid(false);
-            }
-    }*/
-    
     public void deleteSelectedRows(ActionEvent actionEvent) {
         ApplicationModuleImpl am = getApplicationModule();
         ViewObject linesVO = am.findViewObject("PwcOdmNGGradingLinesVO2");
@@ -204,5 +117,27 @@ public class PwcGradingTerryManagedBean {
         }
         rsi.closeRowSetIterator();
         am.getDBTransaction().commit();
+    }
+    
+    public void completeJobAPIActionListener(ActionEvent actionEvent) {
+        String stmt = "PWC_ODM_WO_LESS_COMPL_WEAV_API(? " +
+            ",?" +
+            ",?" +
+            ",?" +
+            ",?" +          
+            ",?)";
+        BindingContainer bindings = getBindingsCont();
+        OperationBinding operationBinding = bindings.getOperationBinding("callCreateReceiptProc");
+        Map params =  operationBinding.getParamsMap();
+        params.put("sqlReturnType", Types.VARCHAR);
+        params.put("stmt", stmt);
+        String[] result =(String[]) operationBinding.execute();
+    //        System.out.println(result[0]+" "+result[1]);
+        if (result != null) {
+            if (result[0].equals("S"))
+                showMessage(result[1]+"", 111);
+            else
+                showMessage(result[1]+"", 112);
+        }
     }
 }

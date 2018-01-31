@@ -45,14 +45,23 @@
     </Properties>
   </Variable>
   <SQLQuery>
-    <![CDATA[select  oola.CUST_PO_NUMBER 
+    <![CDATA[select distinct  oola.CUST_PO_NUMBER
+,ooha.ORDER_NUMBER
+,party.party_name
+--,ood.ORGANIZATION_ID
 from oe_order_headers_all ooha, 
 oe_order_lines_all oola
-,org_organization_definitions ood 
+,hz_cust_accounts cust_acct
+,hz_parties party
+,org_organization_definitions ood
 where  ooha.HEADER_ID = oola.HEADER_ID
+and ooha.ORG_ID = oola.ORG_ID
 and ooha.ORG_ID = ood.OPERATING_UNIT
+and ooha.SOLD_TO_ORG_ID = cust_acct.cust_account_id(+)
+AND cust_acct.party_id = party.party_id(+)
 and ooha.ORDER_NUMBER = nvl(:p_order_no,ooha.ORDER_NUMBER)
-and ood.ORGANIZATION_ID = nvl(:p_org_id,ood.ORGANIZATION_ID)]]>
+and ood.ORGANIZATION_ID = nvl(:p_org_id,ood.ORGANIZATION_ID)
+and oola.cust_po_number is not null]]>
   </SQLQuery>
   <ViewAttribute
     Name="CustPoNumber"
@@ -74,6 +83,42 @@ and ood.ORGANIZATION_ID = nvl(:p_org_id,ood.ORGANIZATION_ID)]]>
           Value="30"/>
         <LABEL
           ResId="model.LOV.PwcOdmGradingCustPoNo.CustPoNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrderNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ORDER_NUMBER"
+    Expression="ORDER_NUMBER"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PartyName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="360"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTY_NAME"
+    Expression="PARTY_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="360"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
