@@ -43,10 +43,11 @@
     </Properties>
   </Variable>
   <SQLQuery>
-    <![CDATA[select ooha.ORDER_NUMBER
- from oe_order_headers_all ooha, oe_order_lines_all oola,org_organization_definitions ood 
- where ooha.HEADER_ID = oola.HEADER_ID
- and ooha.ORG_ID = ood.OPERATING_UNIT
+    <![CDATA[select  ooha.ORDER_NUMBER, party.party_name
+ from oe_order_headers_all ooha,org_organization_definitions ood , hz_parties party, hz_cust_accounts cust_acct
+ where ooha.ORG_ID = ood.OPERATING_UNIT
+ AND ooha.sold_to_org_id = cust_acct.cust_account_id(+)
+ AND cust_acct.party_id = party.party_id(+)
  and ooha.CUST_PO_NUMBER = nvl(:p_cust_po_no,ooha.CUST_PO_NUMBER)
  and ood.ORGANIZATION_ID = nvl(:p_org_id,ood.ORGANIZATION_ID)]]>
   </SQLQuery>
@@ -70,6 +71,21 @@
           Value="30"/>
       </SchemaBasedProperties>
     </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PartyName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="360"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTY_NAME"
+    Expression="PARTY_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="360"/>
+    </DesignTime>
   </ViewAttribute>
   <AttrArray Name="KeyAttributes">
     <Item Value="OrderNumber"/>

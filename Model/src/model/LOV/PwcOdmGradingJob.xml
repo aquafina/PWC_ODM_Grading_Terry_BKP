@@ -58,6 +58,7 @@
         ,we.WIP_ENTITY_NAME
         ,msi.concatenated_segments
         ,msi.DESCRIPTION
+        ,msi.inventory_item_id item_id
         ,wdj.ATTRIBUTE11 cust_po_number
         ,ooha.ORDER_NUMBER Sales_order_number
         ,sum(wdj.START_QUANTITY) job_quantity    
@@ -75,12 +76,12 @@ and    upper(mtt.TRANSACTION_TYPE_NAME) = 'WIP COMPLETION'
 and wdj.status_type in (3,4)
 and mmt.INVENTORY_ITEM_ID = msi.INVENTORY_ITEM_ID
 and mmt.ORGANIZATION_ID = msi.ORGANIZATION_ID
+and we.wip_entity_id not in (select  nvl(job_id,0) from PWC_ODM_GRADING_TERRY_HEADERS)
 and wdj.ATTRIBUTE12 = to_char(ooha.HEADER_ID)
 and wdj.ATTRIBUTE11 = nvl(:p_cust_po_no,wdj.ATTRIBUTE11)
 and ooha.ORDER_NUMBER = nvl(:p_sales_order,ooha.ORDER_NUMBER)
 and msi.ORGANIZATION_ID = nvl(:p_org_id,msi.ORGANIZATION_ID)                 
-group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION ,wdj.ATTRIBUTE11 ,wdj.ATTRIBUTE12,ooha.ORDER_NUMBER
-ORDER BY 3]]>
+group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION ,wdj.ATTRIBUTE11 ,wdj.ATTRIBUTE12,ooha.ORDER_NUMBER,msi.inventory_item_id]]>
   </SQLQuery>
   <ViewAttribute
     Name="WipEntityId"
@@ -170,6 +171,21 @@ ORDER BY 3]]>
           Value="30"/>
       </SchemaBasedProperties>
     </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ItemId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ITEM_ID"
+    Expression="ITEM_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
   </ViewAttribute>
   <ViewAttribute
     Name="CustPoNumber"

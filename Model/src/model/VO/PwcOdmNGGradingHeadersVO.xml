@@ -103,6 +103,21 @@
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
+  <ViewAccessor
+    Name="PwcOdmGradingJobSearch1"
+    ViewObjectName="model.LOV.PwcOdmGradingJobSearch">
+    <ParameterMap>
+      <PIMap Variable="p_cust_po_no">
+        <TransientExpression><![CDATA[CustPoNumber]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_org_id">
+        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_sales_order">
+        <TransientExpression><![CDATA[SalesOrderNumber]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ListBinding
     Name="LOV_SalesOrderNumber"
     ListVOName="PwcOdmGradingSalesOrderNoVO1"
@@ -165,6 +180,8 @@
       <Item Value="ItemDescription"/>
       <Item Value="CustPoNumber"/>
       <Item Value="SalesOrderNumber"/>
+      <Item Value="JobId"/>
+      <Item Value="ItemId"/>
     </AttrArray>
     <AttrArray Name="ListAttrNames">
       <Item Value="WipEntityName"/>
@@ -174,6 +191,8 @@
       <Item Value="Description"/>
       <Item Value="CustPoNumber"/>
       <Item Value="SalesOrderNumber"/>
+      <Item Value="WipEntityId"/>
+      <Item Value="ItemId"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="WipEntityId"/>
@@ -201,6 +220,27 @@
       <Item Value="CustPoNumber"/>
       <Item Value="OrderNumber"/>
       <Item Value="PartyName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_JobSearch"
+    ListVOName="PwcOdmGradingJobSearch1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_JobSearch_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="JobSearch"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="WipEntityName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="WipEntityName"/>
+      <Item Value="ConcatenatedSegments"/>
+      <Item Value="Description"/>
     </AttrArray>
     <DisplayCriteria
       Hint="showAndExecute"/>
@@ -236,7 +276,9 @@
        PwcOdmNGGradingHeadersEO.ATTRIBUTE14, 
        PwcOdmNGGradingHeadersEO.ATTRIBUTE15, 
        PwcOdmNGGradingHeadersEO.STITCH_QUANTITY, 
-       PwcOdmNGGradingHeadersEO.CUST_PO_NUMBER
+       PwcOdmNGGradingHeadersEO.CUST_PO_NUMBER,
+       PwcOdmNGGradingHeadersEO.JOB job_search,
+       PwcOdmNGGradingHeadersEO.JOB_ID
 FROM PWC_ODM_GRADING_TERRY_HEADERS PwcOdmNGGradingHeadersEO
 where PwcOdmNGGradingHeadersEO.ORG_ID = nvl(:p_org_id,PwcOdmNGGradingHeadersEO.ORG_ID)]]>
   </SQLQuery>
@@ -480,6 +522,44 @@ where PwcOdmNGGradingHeadersEO.ORG_ID = nvl(:p_org_id,PwcOdmNGGradingHeadersEO.O
     </Properties>
   </ViewAttribute>
   <ViewAttribute
+    Name="JobSearch"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="JOB_SEARCH"
+    Expression="JOB_SEARCH"
+    SQLType="VARCHAR"
+    LOVName="LOV_JobSearch">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="JobId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="JOB_ID"
+    Expression="JOB_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
     Name="SumTotalQuantity"
     IsSelected="false"
     IsPersistent="false"
@@ -569,19 +649,19 @@ where PwcOdmNGGradingHeadersEO.ORG_ID = nvl(:p_org_id,PwcOdmNGGradingHeadersEO.O
         IsBindVarValue="true"
         Required="Optional"/>
       <ViewCriteriaItem
-        Name="Job"
-        ViewAttribute="Job"
-        Operator="="
-        Conjunction="OR"
-        Value=":p_job_name"
-        IsBindVarValue="true"
-        Required="Optional"/>
-      <ViewCriteriaItem
         Name="CustPoNumber"
         ViewAttribute="CustPoNumber"
         Operator="="
         Conjunction="OR"
         Value=":p_cust_po_no"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="JobSearch"
+        ViewAttribute="JobSearch"
+        Operator="="
+        Conjunction="OR"
+        Value=":p_job_name"
         IsBindVarValue="true"
         Required="Optional"/>
     </ViewCriteriaRow>

@@ -375,6 +375,16 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
                 obj.setCustPoNumber((String)value);
             }
         }
+        ,
+        JobId {
+            public Object get(PwcOdmNGGradingHeadersEOImpl obj) {
+                return obj.getJobId();
+            }
+
+            public void put(PwcOdmNGGradingHeadersEOImpl obj, Object value) {
+                obj.setJobId((Number)value);
+            }
+        }
         ;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
@@ -436,6 +446,7 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
     public static final int ATTRIBUTE15 = AttributesEnum.Attribute15.index();
     public static final int STITCHQUANTITY = AttributesEnum.StitchQuantity.index();
     public static final int CUSTPONUMBER = AttributesEnum.CustPoNumber.index();
+    public static final int JOBID = AttributesEnum.JobId.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -948,6 +959,22 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
      */
     public void setCustPoNumber(String value) {
         setAttributeInternal(CUSTPONUMBER, value);
+    }
+
+    /**
+     * Gets the attribute value for JobId, using the alias name JobId.
+     * @return the JobId
+     */
+    public Number getJobId() {
+        return (Number)getAttributeInternal(JOBID);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for JobId.
+     * @param value value to set the JobId
+     */
+    public void setJobId(Number value) {
+        setAttributeInternal(JOBID, value);
     }
 
     /**

@@ -3,7 +3,7 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="PwcOdmGradingJob"
+  Name="PwcOdmGradingJobSearch"
   Version="11.1.1.64.93"
   InheritPersonalization="true"
   BindingStyle="OracleName"
@@ -17,20 +17,9 @@
   <Properties>
     <SchemaBasedProperties>
       <LABEL
-        ResId="model.LOV.PwcOdmGradingJob_LABEL"/>
+        ResId="model.LOV.PwcOdmGradingJobSearch_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
-  <Variable
-    Name="p_org_id"
-    Kind="where"
-    Type="java.lang.String">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYHINT
-          Value="Hide"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </Variable>
   <Variable
     Name="p_cust_po_no"
     Kind="where"
@@ -44,6 +33,17 @@
   </Variable>
   <Variable
     Name="p_sales_order"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_org_id"
     Kind="where"
     Type="java.lang.String">
     <Properties>
@@ -76,7 +76,6 @@ and    upper(mtt.TRANSACTION_TYPE_NAME) = 'WIP COMPLETION'
 and wdj.status_type in (3,4)
 and mmt.INVENTORY_ITEM_ID = msi.INVENTORY_ITEM_ID
 and mmt.ORGANIZATION_ID = msi.ORGANIZATION_ID
-and we.wip_entity_id not in (select  nvl(job_id,0) from PWC_ODM_GRADING_TERRY_HEADERS)
 and wdj.ATTRIBUTE12 = to_char(ooha.HEADER_ID)
 and wdj.ATTRIBUTE11 = nvl(:p_cust_po_no,wdj.ATTRIBUTE11)
 and ooha.ORDER_NUMBER = nvl(:p_sales_order,ooha.ORDER_NUMBER)
@@ -99,8 +98,8 @@ group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCR
     </DesignTime>
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="model.LOV.PwcOdmGradingJob.WipEntityId_LABEL"/>
+        <DISPLAYHINT
+          Value="Hide"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -124,7 +123,7 @@ group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCR
         <DISPLAYWIDTH
           Value="30"/>
         <LABEL
-          ResId="model.LOV.PwcOdmGradingJob.WipEntityName_LABEL"/>
+          ResId="model.LOV.PwcOdmGradingJobSearch.WipEntityName_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -147,7 +146,7 @@ group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCR
         <DISPLAYWIDTH
           Value="30"/>
         <LABEL
-          ResId="model.LOV.PwcOdmGradingJob.ConcatenatedSegments_LABEL"/>
+          ResId="model.LOV.PwcOdmGradingJobSearch.ConcatenatedSegments_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -169,6 +168,8 @@ group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCR
       <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="30"/>
+        <LABEL
+          ResId="model.LOV.PwcOdmGradingJobSearch.Description_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -186,6 +187,12 @@ group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCR
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
   </ViewAttribute>
   <ViewAttribute
     Name="CustPoNumber"
@@ -205,6 +212,8 @@ group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCR
       <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="30"/>
+        <LABEL
+          ResId="model.LOV.PwcOdmGradingJobSearch.CustPoNumber_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -222,6 +231,14 @@ group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCR
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="model.LOV.PwcOdmGradingJobSearch.SalesOrderNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
   </ViewAttribute>
   <ViewAttribute
     Name="JobQuantity"
@@ -236,6 +253,14 @@ group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCR
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="model.LOV.PwcOdmGradingJobSearch.JobQuantity_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
   </ViewAttribute>
   <ViewAttribute
     Name="StitchingQuantity"
@@ -257,9 +282,6 @@ group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCR
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
-  <AttrArray Name="KeyAttributes">
-    <Item Value="WipEntityId"/>
-  </AttrArray>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="model.ModelBundle"/>
