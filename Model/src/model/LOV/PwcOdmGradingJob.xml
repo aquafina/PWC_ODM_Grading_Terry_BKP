@@ -85,7 +85,6 @@ group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCR
   </SQLQuery>
   <ViewAttribute
     Name="WipEntityId"
-    IsUpdateable="false"
     IsPersistent="false"
     IsNotNull="true"
     PrecisionRule="true"
@@ -93,7 +92,8 @@ group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCR
     ColumnType="NUMBER"
     AliasName="WIP_ENTITY_ID"
     Expression="WIP_ENTITY_ID"
-    SQLType="NUMERIC">
+    SQLType="NUMERIC"
+    IsUpdateable="false">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
@@ -101,6 +101,8 @@ group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCR
       <SchemaBasedProperties>
         <LABEL
           ResId="model.LOV.PwcOdmGradingJob.WipEntityId_LABEL"/>
+        <DISPLAYHINT
+          Value="Hide"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>

@@ -65,7 +65,6 @@ and oola.cust_po_number is not null]]>
   </SQLQuery>
   <ViewAttribute
     Name="CustPoNumber"
-    IsUpdateable="false"
     IsPersistent="false"
     PrecisionRule="true"
     Precision="255"
@@ -73,7 +72,8 @@ and oola.cust_po_number is not null]]>
     ColumnType="VARCHAR2"
     AliasName="CUST_PO_NUMBER"
     Expression="CUST_PO_NUMBER"
-    SQLType="VARCHAR">
+    SQLType="VARCHAR"
+    IsUpdateable="false">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>

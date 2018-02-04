@@ -53,7 +53,6 @@
   </SQLQuery>
   <ViewAttribute
     Name="OrderNumber"
-    IsUpdateable="false"
     IsPersistent="false"
     IsNotNull="true"
     PrecisionRule="true"
@@ -61,7 +60,8 @@
     ColumnType="NUMBER"
     AliasName="ORDER_NUMBER"
     Expression="ORDER_NUMBER"
-    SQLType="NUMERIC">
+    SQLType="NUMERIC"
+    IsUpdateable="false">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
@@ -86,6 +86,14 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="360"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="model.LOV.PwcOdmGradingSalesOrderNoVO.PartyName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
   </ViewAttribute>
   <AttrArray Name="KeyAttributes">
     <Item Value="OrderNumber"/>
