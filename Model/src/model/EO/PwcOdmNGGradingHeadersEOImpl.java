@@ -1,5 +1,7 @@
 package model.EO;
 
+import java.math.BigDecimal;
+
 import java.sql.SQLException;
 
 import java.util.Map;
@@ -382,7 +384,7 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
             }
 
             public void put(PwcOdmNGGradingHeadersEOImpl obj, Object value) {
-                obj.setJobId((Number)value);
+                obj.setJobId((BigDecimal)value);
             }
         }
         ;
@@ -965,15 +967,15 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
      * Gets the attribute value for JobId, using the alias name JobId.
      * @return the JobId
      */
-    public Number getJobId() {
-        return (Number)getAttributeInternal(JOBID);
+    public BigDecimal getJobId() {
+        return (BigDecimal)getAttributeInternal(JOBID);
     }
 
     /**
      * Sets <code>value</code> as the attribute value for JobId.
      * @param value value to set the JobId
      */
-    public void setJobId(Number value) {
+    public void setJobId(BigDecimal value) {
         setAttributeInternal(JOBID, value);
     }
 

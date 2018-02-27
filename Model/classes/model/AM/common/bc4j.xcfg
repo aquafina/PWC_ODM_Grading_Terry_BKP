@@ -1,7 +1,8 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
    <AppModuleConfigBag ApplicationName="model.AM.PwcOdmGradingTerryAM">
-      <AppModuleConfig name="PwcOdmGradingTerryAMLocal" ApplicationName="model.AM.PwcOdmGradingTerryAM" DeployPlatform="LOCAL" jbo.project="model.Model">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.Model" name="PwcOdmGradingTerryAMLocal" ApplicationName="model.AM.PwcOdmGradingTerryAM">
+         <Database jbo.locking.mode="optimistic"/>
          <Security AppModuleJndiName="model.AM.PwcOdmGradingTerryAM"/>
          <Custom JDBCDataSource="java:comp/env/jdbc/Conn1DS"/>
       </AppModuleConfig>

@@ -58,7 +58,7 @@
           Value="Hide"/>
       </SchemaBasedProperties>
     </Properties>
-    <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+    <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
   </Variable>
   <ViewAccessor
     Name="PwcOdmGradingSalesOrderNoVO1"
@@ -68,7 +68,7 @@
         <TransientExpression><![CDATA[CustPoNumber]]></TransientExpression>
       </PIMap>
       <PIMap Variable="p_org_id">
-        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+        <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
@@ -87,7 +87,7 @@
         <TransientExpression><![CDATA[CustPoNumber]]></TransientExpression>
       </PIMap>
       <PIMap Variable="p_org_id">
-        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+        <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
@@ -99,7 +99,7 @@
         <TransientExpression><![CDATA[SalesOrderNumber]]></TransientExpression>
       </PIMap>
       <PIMap Variable="p_org_id">
-        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+        <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
@@ -111,7 +111,7 @@
         <TransientExpression><![CDATA[CustPoNumber]]></TransientExpression>
       </PIMap>
       <PIMap Variable="p_org_id">
-        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+        <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
       </PIMap>
       <PIMap Variable="p_sales_order">
         <TransientExpression><![CDATA[SalesOrderNumber]]></TransientExpression>
@@ -199,6 +199,7 @@
       <Item Value="WipEntityName"/>
       <Item Value="Description"/>
       <Item Value="ConcatenatedSegments"/>
+      <Item Value="WipEntityId"/>
     </AttrArray>
     <DisplayCriteria
       Hint="showAndExecute"/>
@@ -234,8 +235,12 @@
     <AttrArray Name="AttrNames">
       <Item Value="JobSearch"/>
     </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="JobId"/>
+    </AttrArray>
     <AttrArray Name="ListAttrNames">
       <Item Value="WipEntityName"/>
+      <Item Value="WipEntityId"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="WipEntityName"/>
@@ -406,7 +411,9 @@ where PwcOdmNGGradingHeadersEO.ORG_ID = nvl(:p_org_id,PwcOdmNGGradingHeadersEO.O
     PrecisionRule="true"
     EntityAttrName="OrgId"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="ORG_ID"/>
+    AliasName="ORG_ID">
+    <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="Attribute1"
     PrecisionRule="true"
@@ -538,27 +545,14 @@ where PwcOdmNGGradingHeadersEO.ORG_ID = nvl(:p_org_id,PwcOdmNGGradingHeadersEO.O
     </DesignTime>
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="input_text_lov"/>
         <DISPLAYWIDTH
           Value="30"/>
         <LABEL
           ResId="model.VO.PwcOdmNGGradingHeadersVO.JobSearch_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
       </SchemaBasedProperties>
     </Properties>
-  </ViewAttribute>
-  <ViewAttribute
-    Name="JobId"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="oracle.jbo.domain.Number"
-    ColumnType="NUMBER"
-    AliasName="JOB_ID"
-    Expression="JOB_ID"
-    SQLType="NUMERIC">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="39"/>
-    </DesignTime>
   </ViewAttribute>
   <ViewAttribute
     Name="SumTotalQuantity"
@@ -615,6 +609,12 @@ where PwcOdmNGGradingHeadersEO.ORG_ID = nvl(:p_org_id,PwcOdmNGGradingHeadersEO.O
     SQLType="NUMERIC">
     <TransientExpression><![CDATA[PwcOdmNGGradingLinesVO.sum("Rewash")]]></TransientExpression>
   </ViewAttribute>
+  <ViewAttribute
+    Name="JobId"
+    PrecisionRule="true"
+    EntityAttrName="JobId"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="JOB_ID"/>
   <ViewCriteria
     Name="PwcOdmNGGradingHeadersVOCriteria"
     ViewObjectName="model.VO.PwcOdmNGGradingHeadersVO"

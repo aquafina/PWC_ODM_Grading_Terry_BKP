@@ -16,7 +16,17 @@
                         model="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery.queryModel}"
                         queryListener="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery.processQuery}"
                         queryOperationListener="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery.processQueryOperation}"
-                        resultComponentId="::pfl1"/>
+                        resultComponentId="::pfl1">
+                <af:panelGroupLayout layout="vertical" id="pgl9">
+                  <af:panelHeader text="PwcOdmNGGradingHeadersEO" id="ph3">
+                    <af:query id="qryId2" headerText="Search" disclosed="true"
+                              value="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery1.queryDescriptor}"
+                              model="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery1.queryModel}"
+                              queryListener="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery1.processQuery}"
+                              queryOperationListener="#{bindings.PwcOdmNGGradingHeadersVOCriteriaQuery1.processQueryOperation}"/>
+                  </af:panelHeader>
+                </af:panelGroupLayout>
+              </af:query>
             </af:panelHeader>
           </af:panelGroupLayout>
           <af:panelHeader text="Create / Edit Grading Terry" id="ph1">
@@ -129,7 +139,7 @@
                                   disabled="false"
                                   id="cb2"
                                   actionListener="#{backingBeanScope.PwcGradingTerryBean.validateAndSaveChanges}"/>
-                <af:commandButton actionListener="#{bindings.Delete.execute}"
+                <af:commandButton actionListener="#{backingBeanScope.PwcGradingTerryBean.deleteHeaderRow}"
                                   text="Delete"
                                   disabled="#{!bindings.Delete.enabled}"
                                   id="cb3"/>
@@ -147,8 +157,12 @@
                                 text="Delete"
                                 disabled="#{!bindings.Delete1.enabled}"
                                 id="cb6"/>
-              <af:commandButton text="Complete" id="cb7"/>
-              <af:commandButton text="Return" id="cb8"/>
+              <af:commandButton text="Complete" id="cb7"
+                                actionListener="#{backingBeanScope.PwcGradingTerryBean.completeJobAPIActionListener}"
+                                partialSubmit="true"/>
+              <af:commandButton text="Return" id="cb8"
+                                actionListener="#{backingBeanScope.PwcGradingTerryBean.returnJobAPIActionListener}"
+                                partialSubmit="true"/>
             </af:toolbar>
             <af:table value="#{bindings.PwcOdmNGGradingLinesVO2.collectionModel}"
                       var="row"
@@ -156,7 +170,8 @@
                       emptyText="#{bindings.PwcOdmNGGradingLinesVO2.viewable ? 'No data to display.' : 'Access Denied.'}"
                       fetchSize="#{bindings.PwcOdmNGGradingLinesVO2.rangeSize}"
                       rowBandingInterval="0" id="t2" styleClass="width:100%;"
-                      varStatus="vs" width="877" partialTriggers="::cb4 ::cb6"
+                      varStatus="vs" width="877"
+                      partialTriggers="::cb4 ::cb6 ::qryId1"
                       autoHeightRows="-1" filterVisible="true"
                       rowSelection="multiple">
               <af:column id="column1" align="center" width="53">
@@ -335,7 +350,18 @@
                 </af:inputText>
               </af:column>
             </af:table>
-             
+            <af:popup id="p1"
+                      binding="#{backingBeanScope.PwcGradingTerryBean.completeJobPopup}">
+              <af:dialog id="d2" type="yesNo"
+                         title="Are you sure you want to complete the Job?"
+                         dialogListener="#{backingBeanScope.PwcGradingTerryBean.completeJobDialogListener}"/>
+            </af:popup>
+            <af:popup id="p2"
+                      binding="#{backingBeanScope.PwcGradingTerryBean.returnJobPopup}">
+              <af:dialog id="d3"
+                         title="Are you sure you want to Return selected transactions?"
+                         dialogListener="#{backingBeanScope.PwcGradingTerryBean.returnJobDialogListener}"/>
+            </af:popup>
           </af:panelGroupLayout>
         </af:panelGroupLayout>
       </af:form>

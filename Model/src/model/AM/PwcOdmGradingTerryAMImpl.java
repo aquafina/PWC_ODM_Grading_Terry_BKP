@@ -1,9 +1,19 @@
 package model.AM;
 
+import java.sql.CallableStatement;
+
+import java.sql.SQLException;
+
 import model.AM.common.PwcOdmGradingTerryAM;
+
+import model.VO.PwcOdmNGGradingLinesVOImpl;
 
 import oracle.adf.share.ADFContext;
 
+import oracle.jbo.JboException;
+import oracle.jbo.Row;
+import oracle.jbo.RowSetIterator;
+import oracle.jbo.ViewObject;
 import oracle.jbo.server.ApplicationModuleImpl;
 import oracle.jbo.server.ViewLinkImpl;
 import oracle.jbo.server.ViewObjectImpl;
@@ -16,12 +26,35 @@ import oracle.jbo.server.ViewObjectImpl;
 public class PwcOdmGradingTerryAMImpl extends ApplicationModuleImpl implements PwcOdmGradingTerryAM {
     
     public void setSessionValues(String orgId, String userId, String respId,
-                                 String respAppl) {
+                                 String respAppl, String mfgOrgId) {
         System.out.println("orgid = "+orgId);
         ADFContext.getCurrent().getSessionScope().put("user_id", userId);
         ADFContext.getCurrent().getSessionScope().put("org_id", orgId);
         ADFContext.getCurrent().getSessionScope().put("resp_id", respId);
         ADFContext.getCurrent().getSessionScope().put("resp_appl_id", respAppl);
+        
+        String   MfgOrgName = null;
+                ViewObject mfgVO = this.getDBTransaction().createViewObjectFromQueryStmt("SELECT ORGANIZATION_ID,ORGANIZATION_NAME FROM ORG_ACCESS_V WHERE RESP_APPLICATION_ID = "+respAppl+" AND RESPONSIBILITY_ID = "+respId);
+                //        ViewObject mfgVO = this.getDBTransaction().createViewObjectFromQueryStmt("SELECT ORGANIZATION_ID,ORGANIZATION_NAME FROM ORG_ACCESS_V WHERE RESP_APPLICATION_ID = 706 AND RESPONSIBILITY_ID = 51776");
+                         if(mfgVO != null){
+                             if(mfgVO.getRowCount() == 1){
+                                 Row mfgRow = mfgVO.first();
+                                 try{
+                                     mfgOrgId = mfgRow.getAttribute(0).toString();
+                                     ADFContext.getCurrent().getSessionScope().put("mfg_org_id", mfgOrgId);
+                                 }catch(Exception e){
+                                         ;
+                                 }
+                                 try{
+                                     MfgOrgName = mfgRow.getAttribute(1).toString();
+                                     ADFContext.getCurrent().getSessionScope().put("mfg_org_name", MfgOrgName);
+                                 }catch(Exception e){
+                                         ;
+                                 }       
+                             }    
+                         }
+                         System.out.println("mfg_org_id = "+mfgOrgId);
+                ADFContext.getCurrent().getSessionScope().put("mfg_org_id", mfgOrgId);
     }
     /**
      * This is the default constructor (do not remove).
@@ -68,4 +101,57 @@ public class PwcOdmGradingTerryAMImpl extends ApplicationModuleImpl implements P
     public ViewLinkImpl getPwcOdmNGGradingHdrsLinesVL() {
         return (ViewLinkImpl)findViewLink("PwcOdmNGGradingHdrsLinesVL");
     }
+    
+    public String callAPIProc(int sqlReturnType, String stmt, String requestStatus){
+           System.out.println(sqlReturnType+ " "+stmt);
+           CallableStatement cst = null;
+           String status = null;
+           int user_id = Integer.parseInt(ADFContext.getCurrent().getSessionScope().get("user_id")!=null?ADFContext.getCurrent().getSessionScope().get("user_id").toString():"0");
+           int resp_id = Integer.parseInt(ADFContext.getCurrent().getSessionScope().get("resp_id")!=null?ADFContext.getCurrent().getSessionScope().get("resp_id").toString():"0");
+           int resp_appl_id = Integer.parseInt(ADFContext.getCurrent().getSessionScope().get("resp_appl_id")!=null?ADFContext.getCurrent().getSessionScope().get("resp_appl_id").toString():"0");
+           System.out.println("resp_appl_id = "+ADFContext.getCurrent().getSessionScope().get("resp_appl_id"));
+               cst = this.getDBTransaction().createCallableStatement("{CALL " + stmt + " }", 0);
+               //Pass input parameters value
+               ViewObject gradingTerryLinesVO = this.getPwcOdmNGGradingLinesVO2();
+               RowSetIterator rsi = gradingTerryLinesVO.createRowSetIterator(null);
+               while (rsi.next()!=null) {
+                       Row currRow = rsi.getCurrentRow();
+                       if (requestStatus.equals("S") || (requestStatus.equals("R") && (Boolean)currRow.getAttribute("SelectedRow")==Boolean.TRUE))
+                       {
+                           System.out.println("into if check "+requestStatus);
+                       try {
+                           cst.setInt(1,Integer.parseInt(currRow.getAttribute("GdId")!=null?currRow.getAttribute("GdId").toString():"0"));
+                           System.out.println("Gd id = "+Integer.parseInt(currRow.getAttribute("GdId").toString()));
+                           cst.setInt(2,Integer.parseInt(currRow.getAttribute("StitchingLineId")!=null?currRow.getAttribute("StitchingLineId").toString():"0"));
+                           System.out.println("Line id = "+Integer.parseInt(currRow.getAttribute("StitchingLineId").toString()));
+                           cst.setInt(3,Integer.parseInt(currRow.getAttribute("OrgId")!=null?currRow.getAttribute("OrgId").toString():"0"));
+                           System.out.println("org id = "+Integer.parseInt(currRow.getAttribute("OrgId").toString()));
+                           cst.setInt(4,1110);
+                           System.out.println("user id = "+1110);
+                           cst.setInt(5,resp_id);
+                           System.out.println("resp id = "+resp_id);
+                           cst.setInt(6,resp_appl_id);
+                           System.out.println("resp appl id = "+resp_appl_id);
+                           cst.registerOutParameter(7, sqlReturnType);
+                           cst.execute();
+                           status = cst.getString(7);
+                       }
+                       catch (SQLException e) {
+                                throw new JboException(e.getMessage());
+                            }
+                       if (status.equals("SUCCESSFUL"))
+                          currRow.setAttribute("RequestStatus", requestStatus);
+                    }
+               }
+               if (cst != null) {
+               try {
+                   cst.close();
+               } catch (SQLException e) {
+                   e.printStackTrace();
+               }
+           }
+               getDBTransaction().commit();
+           return status;
+       //     return "";
+       }
 }

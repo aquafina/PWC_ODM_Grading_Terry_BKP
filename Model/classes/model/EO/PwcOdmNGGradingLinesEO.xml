@@ -391,6 +391,18 @@
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="RequestStatus"
+    Precision="10"
+    ColumnName="REQUEST_STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
   <Key
     Name="PwcodmnggradinglineseoPrimaryKey"
     PrimaryKey="true">

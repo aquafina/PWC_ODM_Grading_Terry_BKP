@@ -385,7 +385,7 @@
     Name="JobId"
     ColumnName="JOB_ID"
     SQLType="NUMERIC"
-    Type="oracle.jbo.domain.Number"
+    Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     TableName="PWC_ODM_GRADING_TERRY_HEADERS">
     <DesignTime>

@@ -7,5 +7,7 @@ import oracle.jbo.ApplicationModule;
 // ---------------------------------------------------------------------
 public interface PwcOdmGradingTerryAM extends ApplicationModule {
     void setSessionValues(String orgId, String userId, String respId,
-                          String respAppl);
+                          String respAppl, String mfgOrgId);
+
+    String callAPIProc(int sqlReturnType, String stmt, String requestStatus);
 }

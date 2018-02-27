@@ -49,6 +49,23 @@
       <Parameter
         Name="respAppl"
         Type="java.lang.String"/>
+      <Parameter
+        Name="mfgOrgId"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="callAPIProc">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="sqlReturnType"
+        Type="int"/>
+      <Parameter
+        Name="stmt"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="requestStatus"
+        Type="java.lang.String"/>
     </Method>
   </ClientInterface>
 </AppModule>

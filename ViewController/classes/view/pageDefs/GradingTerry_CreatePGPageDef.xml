@@ -17,6 +17,10 @@
                   id="PwcOdmNGGradingHeadersVOCriteriaQuery"/>
     <invokeAction Binds="setSessionValues" id="setSessionValuesAction"
                   Refresh="always"/>
+    <searchRegion Criteria="PwcOdmNGGradingHeadersVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="PwcOdmNGGradingHeadersVO2Iterator"
+                  id="PwcOdmNGGradingHeadersVOCriteriaQuery1"/>
   </executables>
   <bindings>
     <listOfValues StaticList="false"
@@ -117,12 +121,17 @@
         <Item Value="false"/>
       </ValueList>
     </button>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="ItemCode">
+      <AttrNames>
+        <Item Value="ItemCode"/>
+      </AttrNames>
+    </attributeValues>
     <methodAction id="setSessionValues"
                   InstanceName="PwcOdmGradingTerryAMDataControl.dataProvider"
                   DataControl="PwcOdmGradingTerryAMDataControl"
                   RequiresUpdateModel="true" Action="invokeMethod"
-                  MethodName="setSessionValues" IsViewObjectMethod="false"
-                  ReturnName="data.PwcOdmGradingTerryAMDataControl.methodResults.setSessionValues_PwcOdmGradingTerryAMDataControl_dataProvider_setSessionValues_result">
+                  MethodName="setSessionValues" IsViewObjectMethod="false">
       <NamedData NDName="orgId" NDValue="#{viewScope.OrgId}"
                  NDType="java.lang.String"/>
       <NamedData NDName="userId" NDValue="#{viewScope.UserId}"
@@ -131,12 +140,17 @@
                  NDType="java.lang.String"/>
       <NamedData NDName="respAppl" NDValue="#{viewScope.RespApplId}"
                  NDType="java.lang.String"/>
+      <NamedData NDName="mfgOrgId" NDType="java.lang.String"/>
     </methodAction>
-    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
-                     id="ItemCode">
-      <AttrNames>
-        <Item Value="ItemCode"/>
-      </AttrNames>
-    </attributeValues>
+    <methodAction id="callAPIProc"
+                  InstanceName="PwcOdmGradingTerryAMDataControl.dataProvider"
+                  DataControl="PwcOdmGradingTerryAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="callAPIProc" IsViewObjectMethod="false"
+                  ReturnName="data.PwcOdmGradingTerryAMDataControl.methodResults.callAPIProc_PwcOdmGradingTerryAMDataControl_dataProvider_callAPIProc_result">
+      <NamedData NDName="sqlReturnType" NDType="int"/>
+      <NamedData NDName="stmt" NDType="java.lang.String"/>
+      <NamedData NDName="requestStatus" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

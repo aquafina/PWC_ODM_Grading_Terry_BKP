@@ -384,6 +384,16 @@ public class PwcOdmNGGradingLinesEOImpl extends EntityImpl {
                 obj.setRewash((Number)value);
             }
         }
+        ,
+        RequestStatus {
+            public Object get(PwcOdmNGGradingLinesEOImpl obj) {
+                return obj.getRequestStatus();
+            }
+
+            public void put(PwcOdmNGGradingLinesEOImpl obj, Object value) {
+                obj.setRequestStatus((String)value);
+            }
+        }
         ;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
@@ -446,6 +456,7 @@ public class PwcOdmNGGradingLinesEOImpl extends EntityImpl {
     public static final int STITCHINGLINENUMBER = AttributesEnum.StitchingLineNumber.index();
     public static final int RETRUNFLAG = AttributesEnum.RetrunFlag.index();
     public static final int REWASH = AttributesEnum.Rewash.index();
+    public static final int REQUESTSTATUS = AttributesEnum.RequestStatus.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -974,6 +985,23 @@ public class PwcOdmNGGradingLinesEOImpl extends EntityImpl {
      */
     public void setRewash(Number value) {
         setAttributeInternal(REWASH, value);
+    }
+
+
+    /**
+     * Gets the attribute value for RequestStatus, using the alias name RequestStatus.
+     * @return the RequestStatus
+     */
+    public String getRequestStatus() {
+        return (String)getAttributeInternal(REQUESTSTATUS);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for RequestStatus.
+     * @param value value to set the RequestStatus
+     */
+    public void setRequestStatus(String value) {
+        setAttributeInternal(REQUESTSTATUS, value);
     }
 
     /**

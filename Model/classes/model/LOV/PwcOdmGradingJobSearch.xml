@@ -282,6 +282,9 @@ group by we.WIP_ENTITY_ID,we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCR
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="WipEntityId"/>
+  </AttrArray>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="model.ModelBundle"/>
