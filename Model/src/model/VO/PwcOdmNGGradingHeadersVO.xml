@@ -282,9 +282,10 @@
        PwcOdmNGGradingHeadersEO.STITCH_QUANTITY, 
        PwcOdmNGGradingHeadersEO.CUST_PO_NUMBER,
        PwcOdmNGGradingHeadersEO.JOB_ID,
-       PwcOdmNGGradingHeadersEO.JOB JOB_SEARCH 
+       PwcOdmNGGradingHeadersEO.JOB JOB_SEARCH, 
+       PwcOdmNGGradingHeadersEO.MFG_ORG_ID
 FROM PWC_ODM_GRADING_TERRY_HEADERS PwcOdmNGGradingHeadersEO
-where PwcOdmNGGradingHeadersEO.ORG_ID = nvl(:p_org_id,PwcOdmNGGradingHeadersEO.ORG_ID)
+where PwcOdmNGGradingHeadersEO.MFG_ORG_ID = nvl(:p_org_id,PwcOdmNGGradingHeadersEO.MFG_ORG_ID)
 and PwcOdmNGGradingHeadersEO.JOB = nvl(:p_job_name,PwcOdmNGGradingHeadersEO.JOB)]]>
   </SQLQuery>
   <EntityUsage
@@ -372,31 +373,44 @@ and PwcOdmNGGradingHeadersEO.JOB = nvl(:p_job_name,PwcOdmNGGradingHeadersEO.JOB)
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="CREATED_BY"/>
+    AliasName="CREATED_BY"
+    IsUpdateable="while_insert">
+    <TransientExpression><![CDATA[adf.context.sessionScope.user_id]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreationDate"
     PrecisionRule="true"
     EntityAttrName="CreationDate"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="CREATION_DATE"/>
+    AliasName="CREATION_DATE"
+    IsUpdateable="while_insert">
+    <TransientExpression><![CDATA[adf.currentDateTime]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastUpdatedBy"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="LAST_UPDATED_BY"/>
+    AliasName="LAST_UPDATED_BY">
+    <TransientExpression><![CDATA[adf.context.sessionScope.user_id]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastUpdatedDate"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedDate"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="LAST_UPDATED_DATE"/>
+    AliasName="LAST_UPDATED_DATE">
+    <TransientExpression><![CDATA[adf.currentDateTime]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastUpdatedLogin"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedLogin"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="LAST_UPDATED_LOGIN"/>
+    AliasName="LAST_UPDATED_LOGIN"
+    IsUpdateable="while_insert">
+    <TransientExpression><![CDATA[adf.context.sessionScope.user_id]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="OrgId"
     PrecisionRule="true"
@@ -595,6 +609,14 @@ and PwcOdmNGGradingHeadersEO.JOB = nvl(:p_job_name,PwcOdmNGGradingHeadersEO.JOB)
           ResId="model.VO.PwcOdmNGGradingHeadersVO.JobSearch_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MfgOrgId"
+    PrecisionRule="true"
+    EntityAttrName="MfgOrgId"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="MFG_ORG_ID">
+    <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
   </ViewAttribute>
   <ViewCriteria
     Name="PwcOdmNGGradingHeadersVOCriteria"

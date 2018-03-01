@@ -140,31 +140,43 @@ FROM PWC_ODM_GRADING_TERRY_LINES PwcOdmNGGradingLinesEO]]>
     PrecisionRule="true"
     EntityAttrName="CreationDate"
     EntityUsage="PwcOdmNGGradingLinesEO"
-    AliasName="CREATION_DATE"/>
+    AliasName="CREATION_DATE"
+    IsUpdateable="while_insert">
+    <TransientExpression><![CDATA[adf.currentDateTime]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreatedBy"
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
     EntityUsage="PwcOdmNGGradingLinesEO"
-    AliasName="CREATED_BY"/>
+    AliasName="CREATED_BY"
+    IsUpdateable="while_insert">
+    <TransientExpression><![CDATA[adf.context.sessionScope.user_id]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastUpdatedBy"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
     EntityUsage="PwcOdmNGGradingLinesEO"
-    AliasName="LAST_UPDATED_BY"/>
+    AliasName="LAST_UPDATED_BY">
+    <TransientExpression><![CDATA[adf.context.sessionScope.user_id]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastUpdatedDate"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedDate"
     EntityUsage="PwcOdmNGGradingLinesEO"
-    AliasName="LAST_UPDATED_DATE"/>
+    AliasName="LAST_UPDATED_DATE">
+    <TransientExpression><![CDATA[adf.currentDateTime]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastUpdatedLogin"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedLogin"
     EntityUsage="PwcOdmNGGradingLinesEO"
-    AliasName="LAST_UPDATED_LOGIN"/>
+    AliasName="LAST_UPDATED_LOGIN">
+    <TransientExpression><![CDATA[adf.context.sessionScope.user_id]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="Attribute1"
     PrecisionRule="true"

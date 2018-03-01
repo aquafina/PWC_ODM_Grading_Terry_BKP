@@ -25,7 +25,7 @@ import oracle.jbo.server.TransactionEvent;
 public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
     private static EntityDefImpl mDefinitionObject;
 
-    protected void doDML(int operation, TransactionEvent e) 
+    /*protected void doDML(int operation, TransactionEvent e) 
     {
         Map sessionScope = ADFContext.getCurrent().getSessionScope();
         String user = (String)sessionScope.get("user_id");
@@ -53,7 +53,7 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
             catch (SQLException f) {;} 
             }
         super.doDML(operation, e);
-    }
+    }*/
 
     /**
      * AttributesEnum: generated enum for identifying attributes and accessors. DO NOT MODIFY.
@@ -378,6 +378,16 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
                 obj.setJobId((BigDecimal)value);
             }
         }
+        ,
+        MfgOrgId {
+            public Object get(PwcOdmNGGradingHeadersEOImpl obj) {
+                return obj.getMfgOrgId();
+            }
+
+            public void put(PwcOdmNGGradingHeadersEOImpl obj, Object value) {
+                obj.setMfgOrgId((Number)value);
+            }
+        }
         ;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
@@ -440,6 +450,7 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
     public static final int STITCHQUANTITY = AttributesEnum.StitchQuantity.index();
     public static final int CUSTPONUMBER = AttributesEnum.CustPoNumber.index();
     public static final int JOBID = AttributesEnum.JobId.index();
+    public static final int MFGORGID = AttributesEnum.MfgOrgId.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -968,6 +979,22 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
      */
     public void setJobId(BigDecimal value) {
         setAttributeInternal(JOBID, value);
+    }
+
+    /**
+     * Gets the attribute value for MfgOrgId, using the alias name MfgOrgId.
+     * @return the MfgOrgId
+     */
+    public Number getMfgOrgId() {
+        return (Number)getAttributeInternal(MFGORGID);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for MfgOrgId.
+     * @param value value to set the MfgOrgId
+     */
+    public void setMfgOrgId(Number value) {
+        setAttributeInternal(MFGORGID, value);
     }
 
     /**

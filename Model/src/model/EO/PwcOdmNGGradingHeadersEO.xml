@@ -392,6 +392,17 @@
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="MfgOrgId"
+    ColumnName="MFG_ORG_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PWC_ODM_GRADING_TERRY_HEADERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
   <Key
     Name="PwcodmnggradingheaderseoPrimaryKey"
     PrimaryKey="true">

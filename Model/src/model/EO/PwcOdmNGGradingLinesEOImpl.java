@@ -23,7 +23,7 @@ import oracle.jbo.server.TransactionEvent;
 public class PwcOdmNGGradingLinesEOImpl extends EntityImpl {
     private static EntityDefImpl mDefinitionObject;
 
-    protected void doDML(int operation, TransactionEvent e) 
+    /*protected void doDML(int operation, TransactionEvent e) 
     {
         Map sessionScope = ADFContext.getCurrent().getSessionScope();
         String user = (String)sessionScope.get("user_id");
@@ -54,7 +54,7 @@ public class PwcOdmNGGradingLinesEOImpl extends EntityImpl {
             catch (SQLException f) {;} 
             }
         super.doDML(operation, e);
-    }
+    }*/
     /**
      * AttributesEnum: generated enum for identifying attributes and accessors. DO NOT MODIFY.
      */
