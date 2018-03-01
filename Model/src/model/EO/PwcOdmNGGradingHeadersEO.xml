@@ -90,7 +90,7 @@
     <TransientExpression><![CDATA[adf.currentDateTime]]></TransientExpression>
   </Attribute>
   <Attribute
-    Name="Job"
+    Name="JobSearch"
     Precision="50"
     ColumnName="JOB"
     SQLType="VARCHAR"

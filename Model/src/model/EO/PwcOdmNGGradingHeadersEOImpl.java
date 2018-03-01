@@ -128,13 +128,13 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
             }
         }
         ,
-        Job {
+        JobSearch {
             public Object get(PwcOdmNGGradingHeadersEOImpl obj) {
-                return obj.getJob();
+                return obj.getJobSearch();
             }
 
             public void put(PwcOdmNGGradingHeadersEOImpl obj, Object value) {
-                obj.setJob((String)value);
+                obj.setJobSearch((String)value);
             }
         }
         ,
@@ -423,7 +423,7 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
     public static final int ITEMCODE = AttributesEnum.ItemCode.index();
     public static final int ITEMDESCRIPTION = AttributesEnum.ItemDescription.index();
     public static final int GDDATE = AttributesEnum.GdDate.index();
-    public static final int JOB = AttributesEnum.Job.index();
+    public static final int JOBSEARCH = AttributesEnum.JobSearch.index();
     public static final int JOBQUANTITY = AttributesEnum.JobQuantity.index();
     public static final int CREATEDBY = AttributesEnum.CreatedBy.index();
     public static final int CREATIONDATE = AttributesEnum.CreationDate.index();
@@ -564,19 +564,19 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
     }
 
     /**
-     * Gets the attribute value for Job, using the alias name Job.
-     * @return the Job
+     * Gets the attribute value for JobSearch, using the alias name JobSearch.
+     * @return the JobSearch
      */
-    public String getJob() {
-        return (String)getAttributeInternal(JOB);
+    public String getJobSearch() {
+        return (String)getAttributeInternal(JOBSEARCH);
     }
 
     /**
-     * Sets <code>value</code> as the attribute value for Job.
-     * @param value value to set the Job
+     * Sets <code>value</code> as the attribute value for JobSearch.
+     * @param value value to set the JobSearch
      */
-    public void setJob(String value) {
-        setAttributeInternal(JOB, value);
+    public void setJobSearch(String value) {
+        setAttributeInternal(JOBSEARCH, value);
     }
 
     /**

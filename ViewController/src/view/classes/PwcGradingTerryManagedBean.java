@@ -90,16 +90,18 @@ public class PwcGradingTerryManagedBean {
                 while(rsi.next()!=null)
                 {
                     Row currRow = rsi.getCurrentRow();
-                    Double totalQty = Double.parseDouble(currRow.getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
-                    Double gradeAQty = Double.parseDouble(currRow.getAttribute("Gradea")!=null?currRow.getAttribute("Gradea").toString():"0.0");
-                    Double gradeBQty = Double.parseDouble(currRow.getAttribute("Gradeb")!=null?currRow.getAttribute("Gradeb").toString():"0.0");
-                    Double gradeCQty = Double.parseDouble(currRow.getAttribute("Gradec")!=null?currRow.getAttribute("Gradec").toString():"0.0");
-                    Double rewashQty = Double.parseDouble(currRow.getAttribute("Rewash")!=null?currRow.getAttribute("Rewash").toString():"0.0");
+                    System.out.println("Row = "+rsi.getCurrentRowIndex());
+                    Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
+                    Double gradeAQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradea")!=null?currVO.getCurrentRow().getAttribute("Gradea").toString():"0.0");
+                    Double gradeBQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradeb")!=null?currVO.getCurrentRow().getAttribute("Gradeb").toString():"0.0");
+                    Double gradeCQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradec")!=null?currVO.getCurrentRow().getAttribute("Gradec").toString():"0.0");
+                    Double rewashQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Rewash")!=null?currVO.getCurrentRow().getAttribute("Rewash").toString():"0.0");
                     Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + rewashQty;
                     System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+                    System.out.println("totalQty = "+totalQty);
                         if (totalGradeQuantities.compareTo(totalQty)!=0) {
                             String message = "Sum of Grade Quantities must be equal to Total Quantity";
-                            showMessage(message, 112);
+//                            showMessage(message, 112);
                             isValid = false;
                             break;
                         }      
