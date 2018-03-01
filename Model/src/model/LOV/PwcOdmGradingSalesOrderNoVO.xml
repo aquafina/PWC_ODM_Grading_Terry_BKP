@@ -43,7 +43,7 @@
     </Properties>
   </Variable>
   <SQLQuery>
-    <![CDATA[select  ooha.ORDER_NUMBER, party.party_name 
+    <![CDATA[select distinct ooha.ORDER_NUMBER, party.party_name 
  from oe_order_headers_all ooha,oe_order_lines_all oola, org_organization_definitions ood , hz_parties party, hz_cust_accounts cust_acct
  where ooha.header_id = oola.header_id
  and ooha.ORG_ID = ood.OPERATING_UNIT

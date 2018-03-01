@@ -29,7 +29,7 @@ public class PwcOdmGradingTerryAMImpl extends ApplicationModuleImpl implements P
                                  String respAppl, String mfgOrgId) {
         System.out.println("orgid = "+orgId);
         ADFContext.getCurrent().getSessionScope().put("user_id", userId);
-        ADFContext.getCurrent().getSessionScope().put("org_id", orgId);
+       // ADFContext.getCurrent().getSessionScope().put("org_id", orgId);
         ADFContext.getCurrent().getSessionScope().put("resp_id", respId);
         ADFContext.getCurrent().getSessionScope().put("resp_appl_id", respAppl);
         

@@ -132,8 +132,7 @@
                   DataControl="PwcOdmGradingTerryAMDataControl"
                   RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="setSessionValues" IsViewObjectMethod="false">
-      <NamedData NDName="orgId" NDValue="#{viewScope.OrgId}"
-                 NDType="java.lang.String"/>
+      <NamedData NDName="orgId" NDValue="" NDType="java.lang.String"/>
       <NamedData NDName="userId" NDValue="#{viewScope.UserId}"
                  NDType="java.lang.String"/>
       <NamedData NDName="respId" NDValue="#{viewScope.RespId}"

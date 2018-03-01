@@ -188,18 +188,21 @@ public class PwcGradingTerryManagedBean {
         ApplicationModuleImpl am = getApplicationModule();
         ViewObject gradingWaveingLinesVO = am.findViewObject("PwcOdmNGGradingLinesVO2");
         RowSetIterator rsi = gradingWaveingLinesVO.createRowSetIterator(null);
-        while (rsi.next()!=null) {
-            Row currRow = rsi.getCurrentRow();
-            if (currRow.getAttribute("RequestStatus")==null) {
-                result = false;
-                break;
-            }
-            else if (currRow.getAttribute("RequestStatus").equals("R"))
-            {
-                result = false;
-                break;
-            }
+        if (rsi.getAllRowsInRange().length>0) {
+            while (rsi.next()!=null) {
+                Row currRow = rsi.getCurrentRow();
+                if (currRow.getAttribute("RequestStatus")==null) {
+                    result = false;
+                    break;
+                }
+                else if (currRow.getAttribute("RequestStatus").equals("R"))
+                {
+                    result = false;
+                    break;
+                }
+            }   
         }
+        else return false;
         return result;
     }
 
@@ -330,7 +333,6 @@ public class PwcGradingTerryManagedBean {
             System.out.println("lines = "+rsi.getAllRowsInRange().length);
             if (linesVO.getAllRowsInRange().length>0)
                 showMessage("Delete all lines before deleting the header", 112);
-    //            System.out.println("Delete all lines before deleting the header");        
             else
             {
                 currHeadersVO.getCurrentRow().remove();

@@ -353,18 +353,7 @@ and PwcOdmNGGradingHeadersEO.JOB = nvl(:p_job_name,PwcOdmNGGradingHeadersEO.JOB)
     PrecisionRule="true"
     EntityAttrName="JobSearch"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="JOB">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="30"/>
-        <CONTROLTYPE
-          Value="input_text_lov"/>
-        <LABEL
-          ResId="model.VO.PwcOdmNGGradingHeadersVO.Job_LABEL"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </ViewAttribute>
+    AliasName="JOB"/>
   <ViewAttribute
     Name="JobQuantity"
     PrecisionRule="true"
@@ -413,9 +402,7 @@ and PwcOdmNGGradingHeadersEO.JOB = nvl(:p_job_name,PwcOdmNGGradingHeadersEO.JOB)
     PrecisionRule="true"
     EntityAttrName="OrgId"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="ORG_ID">
-    <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
-  </ViewAttribute>
+    AliasName="ORG_ID"/>
   <ViewAttribute
     Name="Attribute1"
     PrecisionRule="true"

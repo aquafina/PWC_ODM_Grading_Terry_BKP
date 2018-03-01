@@ -29,11 +29,7 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
     {
         Map sessionScope = ADFContext.getCurrent().getSessionScope();
         String user = (String)sessionScope.get("user_id");
-        System.out.println("User "+user);
         String respId = (String)sessionScope.get("resp_id");
-        System.out.println("Resp Id "+respId);
-        String orgId = (String)sessionScope.get("org_id");
-        System.out.println("Org ID " + orgId);
         if(DML_UPDATE == operation)
         {
             try 
@@ -48,16 +44,11 @@ public class PwcOdmNGGradingHeadersEOImpl extends EntityImpl {
         } 
         if (DML_INSERT == operation)
         {
-            System.out.println("User "+user); 
-            System.out.println("Resp Id "+respId); 
-            System.out.println("Org ID " + orgId); 
             try 
             {
         //setSampleDocNo(new oracle.jbo.domain.Number(getSrNoString())); 
                 setCreationDate(new Timestamp(System.currentTimeMillis()));
-                setCreatedBy(new oracle.jbo.domain.Number(user)); //RespId 
-                //setRespId(new oracle.jbo.domain.Number(respId)); 
-                setOrgId(new oracle.jbo.domain.Number(orgId));
+                setCreatedBy(new oracle.jbo.domain.Number(user));
             } 
             catch (SQLException f) {;} 
             }

@@ -30,7 +30,7 @@ public class PwcOdmNGGradingLinesEOImpl extends EntityImpl {
         System.out.println("User "+user);
         String respId = (String)sessionScope.get("resp_id");
         System.out.println("Resp Id "+respId);
-        String orgId = (String)sessionScope.get("org_id");
+        String orgId = (String)sessionScope.get("mfg_org_id");
         System.out.println("Org ID " + orgId);
         if(DML_UPDATE == operation)
         {
@@ -46,16 +46,10 @@ public class PwcOdmNGGradingLinesEOImpl extends EntityImpl {
         } 
         if (DML_INSERT == operation)
         {
-            System.out.println("User "+user); 
-            System.out.println("Resp Id "+respId); 
-            System.out.println("Org ID " + orgId); 
             try 
             {
-        //setSampleDocNo(new oracle.jbo.domain.Number(getSrNoString())); 
                 setCreationDate(new Timestamp(System.currentTimeMillis()));
                 setCreatedBy(new oracle.jbo.domain.Number(user)); //RespId 
-                //setRespId(new oracle.jbo.domain.Number(respId)); 
-                setOrgId(new oracle.jbo.domain.Number(orgId));
             } 
             catch (SQLException f) {;} 
             }
