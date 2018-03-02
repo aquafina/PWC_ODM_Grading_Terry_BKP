@@ -126,7 +126,7 @@ public class PwcOdmGradingTerryAMImpl extends ApplicationModuleImpl implements P
                            System.out.println("Line id = "+Integer.parseInt(currRow.getAttribute("StitchingLineId").toString()));
                            cst.setInt(3,Integer.parseInt(currRow.getAttribute("OrgId")!=null?currRow.getAttribute("OrgId").toString():"0"));
                            System.out.println("org id = "+Integer.parseInt(currRow.getAttribute("OrgId").toString()));
-                           cst.setInt(4,1110);
+                           cst.setInt(4,user_id);
                            System.out.println("user id = "+1110);
                            cst.setInt(5,resp_id);
                            System.out.println("resp id = "+resp_id);
