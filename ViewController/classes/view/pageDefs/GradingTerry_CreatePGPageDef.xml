@@ -74,6 +74,7 @@
           <Item Value="Remarks"/>
           <Item Value="StitchingLineId"/>
           <Item Value="SelectedRow" Binds="SelectedRow"/>
+          <Item Value="RequestStatus"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

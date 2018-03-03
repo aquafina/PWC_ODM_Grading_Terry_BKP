@@ -9,7 +9,8 @@
   ClearCacheOnRollback="true"
   ComponentClass="model.AM.PwcOdmGradingTerryAMImpl"
   ComponentInterface="model.AM.common.PwcOdmGradingTerryAM"
-  ClientProxyName="model.AM.client.PwcOdmGradingTerryAMClient">
+  ClientProxyName="model.AM.client.PwcOdmGradingTerryAMClient"
+    RequeryOnCommit="true">
   <DesignTime>
     <Attr Name="_deployType" Value="0"/>
     <Attr Name="_isCodegen" Value="true"/>

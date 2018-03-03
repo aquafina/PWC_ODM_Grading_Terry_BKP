@@ -387,7 +387,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="PWC_ODM_GRADING_TERRY_LINES">
+    TableName="PWC_ODM_GRADING_TERRY_LINES"
+    RetrievedOnUpdate="true"
+    RetrievedOnInsert="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>

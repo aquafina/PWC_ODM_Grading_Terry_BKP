@@ -114,9 +114,11 @@ public class PwcOdmGradingTerryAMImpl extends ApplicationModuleImpl implements P
                //Pass input parameters value
                ViewObject gradingTerryLinesVO = this.getPwcOdmNGGradingLinesVO2();
                RowSetIterator rsi = gradingTerryLinesVO.createRowSetIterator(null);
+               gradingTerryLinesVO.executeQuery();
                while (rsi.next()!=null) {
                        Row currRow = rsi.getCurrentRow();
-                       if (requestStatus.equals("S") || (requestStatus.equals("R") && (Boolean)currRow.getAttribute("SelectedRow")==Boolean.TRUE))
+                   String rowStatus = currRow.getAttribute("RequestStatus")!=null?currRow.getAttribute("RequestStatus").toString():"";
+                       if ((!rowStatus.equals("S") && requestStatus.equals("S")) || (!rowStatus.equals("R") && requestStatus.equals("R") && (Boolean)currRow.getAttribute("SelectedRow")==Boolean.TRUE))
                        {
                            System.out.println("into if check "+requestStatus);
                        try {
@@ -125,7 +127,7 @@ public class PwcOdmGradingTerryAMImpl extends ApplicationModuleImpl implements P
                            cst.setInt(2,Integer.parseInt(currRow.getAttribute("StitchingLineId")!=null?currRow.getAttribute("StitchingLineId").toString():"0"));
                            System.out.println("Line id = "+Integer.parseInt(currRow.getAttribute("StitchingLineId").toString()));
                            cst.setInt(3,Integer.parseInt(currRow.getAttribute("MfgOrgId")!=null?currRow.getAttribute("MfgOrgId").toString():"0"));
-                           System.out.println("org id = "+Integer.parseInt(currRow.getAttribute("MfgOrgId").toString()));
+//                           System.out.println("org id = "+Integer.parseInt(currRow.getAttribute("MfgOrgId").toString()));
                            cst.setInt(4,user_id);
                            System.out.println("user id = "+1110);
                            cst.setInt(5,resp_id);
@@ -142,7 +144,9 @@ public class PwcOdmGradingTerryAMImpl extends ApplicationModuleImpl implements P
                                 throw new JboException(e.getMessage());
                             }
                        if (status.equals("SUCCESSFUL"))
+                       {
                           currRow.setAttribute("RequestStatus", requestStatus);
+                       }
                     }
                }
                if (cst != null) {
@@ -153,8 +157,8 @@ public class PwcOdmGradingTerryAMImpl extends ApplicationModuleImpl implements P
                }
            }
                rsi.closeRowSetIterator();
-               gradingTerryLinesVO.executeQuery();
                getDBTransaction().commit();
+           gradingTerryLinesVO.executeQuery(); 
            return status;
        //     return "";
        }
