@@ -68,7 +68,7 @@
        PwcOdmNGGradingLinesEO.ATTRIBUTE13, 
        PwcOdmNGGradingLinesEO.ATTRIBUTE14, 
        PwcOdmNGGradingLinesEO.ATTRIBUTE15, 
-       PwcOdmNGGradingLinesEO.ORG_ID, 
+       PwcOdmNGGradingLinesEO.MFG_ORG_ID, 
        PwcOdmNGGradingLinesEO.STITCHING_LINE_NUMBER, 
        PwcOdmNGGradingLinesEO.RETRUN_FLAG, 
        PwcOdmNGGradingLinesEO.REWASH,
@@ -268,11 +268,11 @@ FROM PWC_ODM_GRADING_TERRY_LINES PwcOdmNGGradingLinesEO]]>
     EntityUsage="PwcOdmNGGradingLinesEO"
     AliasName="ATTRIBUTE15"/>
   <ViewAttribute
-    Name="OrgId"
+    Name="MfgOrgId"
     PrecisionRule="true"
-    EntityAttrName="OrgId"
+    EntityAttrName="MfgOrgId"
     EntityUsage="PwcOdmNGGradingLinesEO"
-    AliasName="ORG_ID">
+    AliasName="MFG_ORG_ID">
     <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
@@ -294,6 +294,12 @@ FROM PWC_ODM_GRADING_TERRY_LINES PwcOdmNGGradingLinesEO]]>
     EntityUsage="PwcOdmNGGradingLinesEO"
     AliasName="REWASH"/>
   <ViewAttribute
+    Name="RequestStatus"
+    PrecisionRule="true"
+    EntityAttrName="RequestStatus"
+    EntityUsage="PwcOdmNGGradingLinesEO"
+    AliasName="REQUEST_STATUS"/>
+  <ViewAttribute
     Name="SelectedRow"
     IsSelected="false"
     IsPersistent="false"
@@ -302,12 +308,6 @@ FROM PWC_ODM_GRADING_TERRY_LINES PwcOdmNGGradingLinesEO]]>
     ColumnType="NUMBER"
     AliasName="VIEW_ATTR"
     SQLType="BIT"/>
-  <ViewAttribute
-    Name="RequestStatus"
-    PrecisionRule="true"
-    EntityAttrName="RequestStatus"
-    EntityUsage="PwcOdmNGGradingLinesEO"
-    AliasName="REQUEST_STATUS"/>
   <ViewLinkAccessor
     Name="PwcOdmNGGradingHeadersVO"
     ViewLink="model.VL.PwcOdmNGGradingHdrsLinesVL"

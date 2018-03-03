@@ -19,5 +19,14 @@
                      Configuration="PwcOdmGradingTerryAMLocal"
                      syncMode="Immediate"
                      xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="PwcOdmGradingWeavingAMDataControl"
+                     Package="model.GradingWeaving.AM"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="PwcOdmGradingWeavingAMLocal"
+                     syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
   </dataControlUsages>
 </Application>

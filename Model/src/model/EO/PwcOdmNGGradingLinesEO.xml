@@ -346,17 +346,6 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="OrgId"
-    ColumnName="ORG_ID"
-    SQLType="NUMERIC"
-    Type="oracle.jbo.domain.Number"
-    ColumnType="NUMBER"
-    TableName="PWC_ODM_GRADING_TERRY_LINES">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="39"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="StitchingLineNumber"
     Precision="250"
     ColumnName="STITCHING_LINE_NUMBER"
@@ -402,6 +391,18 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="10"/>
     </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="MfgOrgId"
+    ColumnName="MFG_ORG_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PWC_ODM_GRADING_TERRY_LINES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
   </Attribute>
   <Key
     Name="PwcodmnggradinglineseoPrimaryKey"

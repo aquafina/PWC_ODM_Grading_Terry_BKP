@@ -354,7 +354,14 @@ and PwcOdmNGGradingHeadersEO.JOB = nvl(:p_job_name,PwcOdmNGGradingHeadersEO.JOB)
     PrecisionRule="true"
     EntityAttrName="JobSearch"
     EntityUsage="PwcOdmNGGradingHeadersEO"
-    AliasName="JOB"/>
+    AliasName="JOB">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PwcOdmNGGradingHeadersVO.Job_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="JobQuantity"
     PrecisionRule="true"

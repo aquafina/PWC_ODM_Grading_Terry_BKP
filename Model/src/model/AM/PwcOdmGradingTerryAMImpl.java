@@ -124,8 +124,8 @@ public class PwcOdmGradingTerryAMImpl extends ApplicationModuleImpl implements P
                            System.out.println("Gd id = "+Integer.parseInt(currRow.getAttribute("GdId").toString()));
                            cst.setInt(2,Integer.parseInt(currRow.getAttribute("StitchingLineId")!=null?currRow.getAttribute("StitchingLineId").toString():"0"));
                            System.out.println("Line id = "+Integer.parseInt(currRow.getAttribute("StitchingLineId").toString()));
-                           cst.setInt(3,Integer.parseInt(currRow.getAttribute("OrgId")!=null?currRow.getAttribute("OrgId").toString():"0"));
-                           System.out.println("org id = "+Integer.parseInt(currRow.getAttribute("OrgId").toString()));
+                           cst.setInt(3,Integer.parseInt(currRow.getAttribute("MfgOrgId")!=null?currRow.getAttribute("MfgOrgId").toString():"0"));
+                           System.out.println("org id = "+Integer.parseInt(currRow.getAttribute("MfgOrgId").toString()));
                            cst.setInt(4,user_id);
                            System.out.println("user id = "+1110);
                            cst.setInt(5,resp_id);
@@ -134,7 +134,9 @@ public class PwcOdmGradingTerryAMImpl extends ApplicationModuleImpl implements P
                            System.out.println("resp appl id = "+resp_appl_id);
                            cst.registerOutParameter(7, sqlReturnType);
                            cst.execute();
+//                           status = cst.getString(7)!=null?cst.getString(7):"";
                            status = cst.getString(7);
+                           System.out.println("status = "+status);
                        }
                        catch (SQLException e) {
                                 throw new JboException(e.getMessage());
@@ -150,6 +152,8 @@ public class PwcOdmGradingTerryAMImpl extends ApplicationModuleImpl implements P
                    e.printStackTrace();
                }
            }
+               rsi.closeRowSetIterator();
+               gradingTerryLinesVO.executeQuery();
                getDBTransaction().commit();
            return status;
        //     return "";

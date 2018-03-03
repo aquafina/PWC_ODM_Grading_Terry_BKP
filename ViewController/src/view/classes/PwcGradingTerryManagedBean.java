@@ -106,8 +106,13 @@ public class PwcGradingTerryManagedBean {
                             break;
                         }      
                 }
+                rsi.closeRowSetIterator();
                 if (isValid)
+                {
+                    currVO.executeQuery();
                     am.getDBTransaction().commit();
+                }
+                
             }
         }
     }
@@ -200,9 +205,10 @@ public class PwcGradingTerryManagedBean {
                     result = false;
                     break;
                 }
-            }   
+            }
         }
         else return false;
+        rsi.closeRowSetIterator();
         return result;
     }
 
@@ -224,6 +230,7 @@ public class PwcGradingTerryManagedBean {
                 }
             }
         }
+        rsi.closeRowSetIterator();
         return result;
     }
 
@@ -318,6 +325,7 @@ public class PwcGradingTerryManagedBean {
                 break;
             }
         }
+        rsi.closeRowSetIterator();
         return result;
     }
     
@@ -345,6 +353,7 @@ public class PwcGradingTerryManagedBean {
                 rsi.insertRowAtRangeIndex(0, newRow); 
                 rsi.setCurrentRow(newRow);      
             }
+            rsi.closeRowSetIterator();
         }
     }
 }

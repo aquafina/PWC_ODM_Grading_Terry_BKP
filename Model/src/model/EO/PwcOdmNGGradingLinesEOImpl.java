@@ -339,16 +339,6 @@ public class PwcOdmNGGradingLinesEOImpl extends EntityImpl {
             }
         }
         ,
-        OrgId {
-            public Object get(PwcOdmNGGradingLinesEOImpl obj) {
-                return obj.getOrgId();
-            }
-
-            public void put(PwcOdmNGGradingLinesEOImpl obj, Object value) {
-                obj.setOrgId((Number)value);
-            }
-        }
-        ,
         StitchingLineNumber {
             public Object get(PwcOdmNGGradingLinesEOImpl obj) {
                 return obj.getStitchingLineNumber();
@@ -386,6 +376,16 @@ public class PwcOdmNGGradingLinesEOImpl extends EntityImpl {
 
             public void put(PwcOdmNGGradingLinesEOImpl obj, Object value) {
                 obj.setRequestStatus((String)value);
+            }
+        }
+        ,
+        MfgOrgId {
+            public Object get(PwcOdmNGGradingLinesEOImpl obj) {
+                return obj.getMfgOrgId();
+            }
+
+            public void put(PwcOdmNGGradingLinesEOImpl obj, Object value) {
+                obj.setMfgOrgId((Number)value);
             }
         }
         ;
@@ -446,11 +446,11 @@ public class PwcOdmNGGradingLinesEOImpl extends EntityImpl {
     public static final int ATTRIBUTE13 = AttributesEnum.Attribute13.index();
     public static final int ATTRIBUTE14 = AttributesEnum.Attribute14.index();
     public static final int ATTRIBUTE15 = AttributesEnum.Attribute15.index();
-    public static final int ORGID = AttributesEnum.OrgId.index();
     public static final int STITCHINGLINENUMBER = AttributesEnum.StitchingLineNumber.index();
     public static final int RETRUNFLAG = AttributesEnum.RetrunFlag.index();
     public static final int REWASH = AttributesEnum.Rewash.index();
     public static final int REQUESTSTATUS = AttributesEnum.RequestStatus.index();
+    public static final int MFGORGID = AttributesEnum.MfgOrgId.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -917,21 +917,6 @@ public class PwcOdmNGGradingLinesEOImpl extends EntityImpl {
         setAttributeInternal(ATTRIBUTE15, value);
     }
 
-    /**
-     * Gets the attribute value for OrgId, using the alias name OrgId.
-     * @return the OrgId
-     */
-    public Number getOrgId() {
-        return (Number)getAttributeInternal(ORGID);
-    }
-
-    /**
-     * Sets <code>value</code> as the attribute value for OrgId.
-     * @param value value to set the OrgId
-     */
-    public void setOrgId(Number value) {
-        setAttributeInternal(ORGID, value);
-    }
 
     /**
      * Gets the attribute value for StitchingLineNumber, using the alias name StitchingLineNumber.
@@ -996,6 +981,22 @@ public class PwcOdmNGGradingLinesEOImpl extends EntityImpl {
      */
     public void setRequestStatus(String value) {
         setAttributeInternal(REQUESTSTATUS, value);
+    }
+
+    /**
+     * Gets the attribute value for MfgOrgId, using the alias name MfgOrgId.
+     * @return the MfgOrgId
+     */
+    public Number getMfgOrgId() {
+        return (Number)getAttributeInternal(MFGORGID);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for MfgOrgId.
+     * @param value value to set the MfgOrgId
+     */
+    public void setMfgOrgId(Number value) {
+        setAttributeInternal(MFGORGID, value);
     }
 
     /**
